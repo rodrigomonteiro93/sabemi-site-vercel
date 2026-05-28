@@ -18,6 +18,10 @@ html, body { margin: 0; padding: 0; }
   --dur-base: 180ms;
   --ease-out: cubic-bezier(0.0, 0.0, 0.2, 1);
 
+  /* Radii & shadows */
+  --radius-pill: 999px;
+  --shadow-focus: 0 0 0 3px rgba(0, 140, 193, 0.25);
+
   /* Texto */
   --fg-1: #1a2332;
   --fg-2: #64748b;

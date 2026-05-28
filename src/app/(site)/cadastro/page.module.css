@@ -1,0 +1,13 @@
+.page {
+  flex: 1;
+  padding: 56px 0 88px;
+}
+
+.pageTitle {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--fg-1);
+  margin: 0 0 40px;
+  letter-spacing: -0.01em;
+}
