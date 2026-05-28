@@ -1,0 +1,17 @@
+.loginLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.userCircle {
+  width: 22px;
+  height: 22px;
+  background: var(--sabemi-blue);
+  color: #fff;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

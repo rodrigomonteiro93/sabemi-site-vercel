@@ -1,0 +1,23 @@
+.iconBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: transparent;
+  border: 0;
+  color: var(--sabemi-blue);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.iconBtn:hover { background: #eaf3fb; }
+.dot {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 8px;
+  height: 8px;
+  background: var(--af-orange);
+  border-radius: 999px;
+  border: 2px solid #fff;
+}

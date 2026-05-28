@@ -1,0 +1,11 @@
+.ytBadge {
+  width: 56px;
+  height: 40px;
+  background: #c4302b;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,.25);
+  color: #fff;
+}

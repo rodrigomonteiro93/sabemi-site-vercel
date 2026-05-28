@@ -1,0 +1,42 @@
+.qfield {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  min-height: 56px;
+  transition: border-color var(--dur-base) var(--ease-out), background var(--dur-base);
+  position: relative;
+}
+.qfield:hover { background: #f6faff; }
+.hasSelect { cursor: pointer; }
+.hasSelect:focus-within { background: #f6faff; }
+.hasSelect:focus-within .col label { color: var(--sabemi-cyan); }
+.ico { color: var(--sabemi-cyan); flex: none; }
+.col { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.col label { font-size: 11px; font-weight: 700; color: var(--sabemi-blue); letter-spacing: .02em; }
+.value { font-size: 14px; color: var(--fg-1); line-height: 1.2; margin-top: 2px; }
+.placeholder { color: var(--fg-3); font-weight: 400; }
+.chev { color: var(--sabemi-cyan); flex: none; }
+.selectOverlay {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 4;
+  font: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  background: transparent;
+  color: transparent;
+  padding: 0 18px;
+}
+.selectOverlay option {
+  color: var(--fg-1);
+  background: #fff;
+  font: inherit;
+  font-weight: 500;
+}

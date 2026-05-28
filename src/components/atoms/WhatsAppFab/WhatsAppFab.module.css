@@ -1,0 +1,17 @@
+.waFab {
+  position: fixed;
+  right: 22px;
+  bottom: 86px;
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  background: #25d366;
+  box-shadow: 0 8px 24px rgba(37,211,102,.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  z-index: 99;
+  cursor: pointer;
+  border: 0;
+}

@@ -1,0 +1,40 @@
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+:root {
+  /* Cores Sabemi */
+  --sabemi-blue: #004077;
+  --sabemi-blue-900: #002c52;
+  --sabemi-cyan: #008cc1;
+  --sabemi-gray: #b0b8c1;
+  --af-orange: #f57c00;
+  --success: #22c55e;
+
+  /* Tipografia */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --lh-normal: 1.5;
+
+  /* Animação */
+  --dur-base: 180ms;
+  --ease-out: cubic-bezier(0.0, 0.0, 0.2, 1);
+
+  /* Texto */
+  --fg-1: #1a2332;
+  --fg-2: #64748b;
+  --fg-3: #94a3b8;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--fg-1);
+  background: #fff;
+  line-height: var(--lh-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+img { max-width: 100%; display: block; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }

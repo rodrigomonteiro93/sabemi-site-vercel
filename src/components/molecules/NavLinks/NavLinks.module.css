@@ -1,0 +1,26 @@
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fg-1);
+  position: relative;
+  padding: 6px 0;
+  transition: color var(--dur-base) var(--ease-out);
+}
+.link:hover { color: var(--sabemi-cyan); }
+.active { color: var(--sabemi-blue); font-weight: 700; }
+.active::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 2px;
+  background: var(--sabemi-blue);
+  border-radius: 2px;
+}
