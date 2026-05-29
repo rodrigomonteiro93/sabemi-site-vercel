@@ -1,0 +1,23 @@
+.terms {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  font-size: 13px;
+  color: var(--fg-1);
+  cursor: pointer;
+}
+
+.terms input[type='checkbox'] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--sabemi-cyan);
+  flex-shrink: 0;
+}
+
+.terms a {
+  color: var(--sabemi-cyan);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

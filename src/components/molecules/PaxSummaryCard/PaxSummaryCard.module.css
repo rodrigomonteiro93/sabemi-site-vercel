@@ -1,0 +1,83 @@
+.summary {
+  display: grid;
+  grid-template-columns: 240px 1fr 1fr;
+  border-bottom: 1px solid #eef2f6;
+}
+
+.brandCell {
+  padding: 18px;
+  border-right: 1px solid #eef2f6;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  height: 38px;
+  display: flex;
+  align-items: center;
+}
+
+.pdf {
+  font-size: 11px;
+  color: var(--sabemi-cyan);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.note {
+  font-size: 10.5px;
+  color: var(--fg-3);
+  line-height: 1.45;
+  text-align: center;
+}
+
+.infoCell {
+  padding: 14px 18px;
+  border-right: 1px solid #eef2f6;
+  display: grid;
+  align-content: start;
+  gap: 12px;
+}
+
+.infoCell:last-of-type {
+  border-right: 0;
+}
+
+.infoRow {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.k {
+  font-weight: 700;
+  color: var(--fg-1);
+}
+
+.v {
+  color: var(--fg-2);
+}
+
+.price {
+  color: var(--sabemi-blue);
+  font-weight: 800;
+  font-size: 16px;
+}
+
+@media (max-width: 980px) {
+  .summary {
+    grid-template-columns: 1fr;
+  }
+
+  .brandCell,
+  .infoCell {
+    border-right: 0;
+    border-bottom: 1px solid #d8e6f1;
+  }
+}
