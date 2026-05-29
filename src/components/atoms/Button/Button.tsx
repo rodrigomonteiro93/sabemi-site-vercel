@@ -1,7 +1,7 @@
 import styles from './Button.module.css';
 
 interface ButtonProps {
-  variant: 'primary' | 'outline' | 'white';
+  variant: 'primary' | 'outline' | 'white' | 'danger';
   children: React.ReactNode;
   onClick?: () => void;
   href?: string;

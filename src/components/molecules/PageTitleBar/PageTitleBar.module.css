@@ -28,3 +28,62 @@
   gap: 10px;
   flex-wrap: wrap;
 }
+
+.action {
+  background: #fff;
+  color: var(--sabemi-blue);
+  border: 1.5px solid var(--sabemi-blue);
+  border-radius: var(--radius-pill);
+  padding: 10px 20px;
+  font: inherit;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background var(--dur-base), color var(--dur-base), border-color var(--dur-base);
+}
+
+.action:hover {
+  background: var(--sabemi-blue);
+  color: #fff;
+}
+
+.actionPrimary {
+  background: var(--sabemi-blue);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.actionPrimary:hover {
+  background: var(--sabemi-blue-900);
+  box-shadow: var(--shadow-md);
+}
+
+.actionDanger {
+  border-color: #f1c6c0;
+  color: #c4302b;
+  background: #fff;
+}
+
+.actionDanger:hover {
+  background: #c4302b;
+  border-color: #c4302b;
+  color: #fff;
+}
+
+.actionDanger:disabled {
+  background: #f6f8fa;
+  color: #b0b8c0;
+  border-color: #e3e8ed;
+  cursor: not-allowed;
+}
+
+.actionDanger:disabled:hover {
+  background: #f6f8fa;
+  color: #b0b8c0;
+  border-color: #e3e8ed;
+}

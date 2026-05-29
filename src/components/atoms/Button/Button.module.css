@@ -44,3 +44,22 @@
   padding: 12px 28px;
 }
 .white:hover { background: #eaf3fb; }
+.danger {
+  background: #fff;
+  color: #c4302b;
+  border: 1.5px solid #f1c6c0;
+  padding: 9px 22px;
+  font-size: 13px;
+  font-weight: 700;
+}
+.danger:hover {
+  background: #c4302b;
+  border-color: #c4302b;
+  color: #fff;
+}
+.danger:disabled {
+  background: #f6f8fa;
+  color: #b0b8c0;
+  border-color: #e3e8ed;
+  cursor: not-allowed;
+}

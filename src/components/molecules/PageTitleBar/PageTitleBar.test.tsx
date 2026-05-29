@@ -61,8 +61,23 @@ describe('PageTitleBar', () => {
     );
 
     const buttons = screen.getAllByRole('button');
-    expect(buttons[0].className).toMatch(/outline/);
-    expect(buttons[1].className).toMatch(/outline/);
-    expect(buttons[2].className).toMatch(/primary/);
+    expect(buttons[0].className).toMatch(/action/);
+    expect(buttons[1].className).toMatch(/action/);
+    expect(buttons[2].className).toMatch(/actionPrimary/);
+  });
+
+  it('aplica variant danger e respeita disabled', () => {
+    render(
+      <PageTitleBar
+        title="Detalhes do Pedido"
+        actions={[
+          { label: 'Solicitar cancelamento', variant: 'danger', onClick: vi.fn(), disabled: true },
+        ]}
+      />,
+    );
+
+    const btn = screen.getByRole('button', { name: /Solicitar cancelamento/i });
+    expect(btn.className).toMatch(/actionDanger/);
+    expect(btn).toBeDisabled();
   });
 });

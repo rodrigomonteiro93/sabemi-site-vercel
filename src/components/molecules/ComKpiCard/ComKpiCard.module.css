@@ -33,3 +33,7 @@
 .success .v { color: var(--success); }
 .warning .v { color: #b67e00; }
 .danger .v { color: #c4302b; }
+
+.compactValue .v {
+  font-size: 17px;
+}

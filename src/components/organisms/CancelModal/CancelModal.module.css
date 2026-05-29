@@ -1,0 +1,215 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 44, 82, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.modal {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 580px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 44, 82, .45);
+}
+
+.modalHead {
+  background: var(--sabemi-blue);
+  color: #fff;
+  padding: 14px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modalHead h2 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.close {
+  background: transparent;
+  border: 0;
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--dur-base);
+}
+
+.close:hover {
+  background: rgba(255, 255, 255, .18);
+}
+
+.modalBody {
+  padding: 26px 28px 22px;
+}
+
+.modalAlert {
+  background: #fdeae6;
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 22px;
+  font-size: 12.5px;
+  color: #6e1f1a;
+  line-height: 1.55;
+}
+
+.alertIco {
+  color: #c4302b;
+  flex: none;
+  margin-top: 1px;
+}
+
+.modalSubject {
+  background: #f6f8fa;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  color: var(--fg-1);
+  margin-bottom: 16px;
+}
+
+.fieldReason {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.fieldReason label {
+  position: absolute;
+  top: -7px;
+  left: 22px;
+  background: #fff;
+  padding: 0 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--sabemi-blue);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.fieldReason select {
+  width: 100%;
+  border: 1px solid var(--sabemi-cyan);
+  border-radius: var(--radius-pill);
+  background: #fff;
+  padding: 13px 38px 13px 22px;
+  font-size: 14px;
+  color: var(--fg-1);
+  outline: none;
+  font-family: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--sabemi-cyan) 50%),
+    linear-gradient(135deg, var(--sabemi-cyan) 50%, transparent 50%);
+  background-position: calc(100% - 20px) 19px, calc(100% - 15px) 19px;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
+
+.fieldReason select:focus {
+  box-shadow: var(--shadow-focus);
+}
+
+.fieldTextarea {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.fieldTextarea label {
+  position: absolute;
+  top: -7px;
+  left: 22px;
+  background: #fff;
+  padding: 0 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--sabemi-blue);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.fieldTextarea textarea {
+  width: 100%;
+  border: 1px solid var(--sabemi-cyan);
+  border-radius: var(--radius-md);
+  background: #fff;
+  padding: 14px 22px;
+  font-size: 14px;
+  color: var(--fg-1);
+  outline: none;
+  font-family: inherit;
+  min-height: 100px;
+  resize: vertical;
+  transition: box-shadow var(--dur-base), border-color var(--dur-base);
+}
+
+.fieldTextarea textarea:focus {
+  box-shadow: var(--shadow-focus);
+}
+
+.modalActions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  padding-top: 18px;
+  border-top: 1px solid #eef2f6;
+}
+
+.btnConfirmDanger {
+  background: #c4302b;
+  color: #fff;
+  border: 0;
+  border-radius: var(--radius-pill);
+  padding: 12px 28px;
+  font: inherit;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: background var(--dur-base);
+}
+
+.btnConfirmDanger:hover {
+  background: #9a2520;
+}
+
+.btnCancelModal {
+  background: #fff;
+  color: var(--fg-2);
+  border: 1px solid #d3dae0;
+  border-radius: var(--radius-pill);
+  padding: 12px 28px;
+  font: inherit;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background var(--dur-base), color var(--dur-base);
+}
+
+.btnCancelModal:hover {
+  background: var(--bg-brand-soft);
+  color: var(--sabemi-blue);
+}

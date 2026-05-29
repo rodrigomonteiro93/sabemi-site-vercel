@@ -1,0 +1,142 @@
+.card {
+  background: #fff;
+  border: 1px solid #eef2f6;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.cardHead {
+  background: var(--sabemi-blue);
+  color: #fff;
+  padding: 12px 22px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 18px;
+}
+
+.headLeft {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.orderHero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 26px;
+  border-bottom: 1px solid #eef2f6;
+  background: linear-gradient(180deg, #fff 0%, #fafcfe 100%);
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.heroLeft {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.heroBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.heroK {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+
+.heroV {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--sabemi-blue);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.heroSub {
+  font-size: 11.5px;
+  color: var(--fg-3);
+  font-weight: 500;
+}
+
+.heroSep {
+  width: 1px;
+  height: 60px;
+  background: #eef2f6;
+}
+
+.heroPill {
+  display: inline-flex;
+  flex-direction: column;
+  background: var(--bg-brand-soft);
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid #dbe7f1;
+  line-height: 1.3;
+}
+
+.pillK {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--sabemi-blue);
+}
+
+.pillV {
+  font-size: 13.5px;
+  color: var(--fg-1);
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.infoGrid > :nth-last-child(-n+2) {
+  border-bottom: 0 !important;
+}
+
+.infoGrid > :nth-child(odd) {
+  border-right: 1px solid #eef2f6;
+}
+
+@media (max-width: 1180px) {
+  .infoGrid {
+    grid-template-columns: 1fr;
+  }
+  .infoGrid > :nth-child(odd) {
+    border-right: 0;
+  }
+}
+
+@media (max-width: 1020px) {
+  .orderHero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .heroLeft {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  .heroSep {
+    display: none;
+  }
+}

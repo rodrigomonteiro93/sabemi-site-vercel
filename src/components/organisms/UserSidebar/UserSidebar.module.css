@@ -32,6 +32,16 @@
 .btnCotar {
   width: 100%;
   margin-bottom: 12px;
+  padding: 14px !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  letter-spacing: .14em !important;
+  text-transform: uppercase !important;
+  box-shadow: var(--shadow-sm);
+}
+
+.btnCotar:hover {
+  box-shadow: var(--shadow-md);
 }
 
 .btnSideOutline {

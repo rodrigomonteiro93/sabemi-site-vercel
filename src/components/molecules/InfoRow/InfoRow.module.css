@@ -46,3 +46,11 @@
 .danger { color: #c4302b; }
 .success { color: var(--success); }
 .mono { font-family: monospace; }
+
+.voucherRow {
+  background: #f7fbff;
+}
+
+.icoVoucher {
+  background: #d5e9fa;
+}
