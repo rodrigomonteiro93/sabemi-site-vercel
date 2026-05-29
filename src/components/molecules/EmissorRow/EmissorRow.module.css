@@ -1,0 +1,158 @@
+.erowGrid {
+  display: grid;
+  grid-template-columns: 260px 1fr 130px 130px 80px 110px 120px;
+  gap: 16px;
+  align-items: center;
+}
+
+.erow {
+  padding: 14px 22px;
+  border-bottom: 1px solid #eef2f6;
+  transition: background var(--dur-base);
+}
+
+.erow:last-child {
+  border-bottom: 0;
+}
+
+.erow:hover {
+  background: #fafcfe;
+}
+
+.emissor {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.info {
+  min-width: 0;
+  line-height: 1.3;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--fg-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.doc {
+  font-size: 11.5px;
+  color: var(--fg-3);
+  margin-top: 3px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact {
+  line-height: 1.3;
+  min-width: 0;
+}
+
+.email {
+  font-size: 13px;
+  color: var(--fg-1);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tel {
+  font-size: 11.5px;
+  color: var(--fg-3);
+  margin-top: 3px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.comCell {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--sabemi-blue);
+}
+
+.none {
+  color: var(--fg-3);
+  font-weight: 500;
+}
+
+.dataCell {
+  font-size: 12.5px;
+  color: var(--fg-2);
+  line-height: 1.3;
+}
+
+.dataHora {
+  font-size: 11px;
+  color: var(--fg-3);
+  margin-top: 2px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+}
+
+.btnEdit {
+  background: transparent;
+  border: 1.5px solid var(--sabemi-blue);
+  color: var(--sabemi-blue);
+  border-radius: var(--radius-pill);
+  padding: 7px 14px;
+  font: inherit;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background var(--dur-base), color var(--dur-base);
+}
+
+.btnEdit:hover {
+  background: var(--sabemi-blue);
+  color: #fff;
+}
+
+.btnDel {
+  background: transparent;
+  border: 1.5px solid #f1c6c0;
+  color: #c4302b;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--dur-base), color var(--dur-base), border-color var(--dur-base);
+}
+
+.btnDel:hover {
+  background: #c4302b;
+  color: #fff;
+  border-color: #c4302b;
+}
+
+@media (max-width: 1100px) {
+  .erowGrid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .actions {
+    justify-content: flex-start;
+  }
+}

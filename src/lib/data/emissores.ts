@@ -1,0 +1,28 @@
+import { EmissorItem } from '@/lib/types/emissores';
+
+export const EMISSORES_STATIC: EmissorItem[] = [
+  { id: 1,  nome: 'User teste',        email: 'user_agencia@agencia.com',    tel: '(12) 3123-12312',  cpf: '210.057.350-00', perfil: 'emissor',    comissao: null,  ativo: true,  data: '25/05/2025 09:47' },
+  { id: 2,  nome: 'Broker',            email: 'broker@agencia.com.br',       tel: '(51) 9999-99999',  cpf: '555.540.070-58', perfil: 'financeiro', comissao: 10.00, ativo: true,  data: '25/05/2025 09:47' },
+  { id: 3,  nome: 'Emissor 001',       email: 'emissor001@email.com',        tel: '(12) 31312-3123',  cpf: '013.161.700-12', perfil: 'emissor',    comissao: null,  ativo: false, data: '25/05/2025 09:47' },
+  { id: 4,  nome: 'Nome emissor teste',email: 'email@ermail.com',            tel: '(12) 31231-2312',  cpf: '117.362.212-80', perfil: 'emissor',    comissao: null,  ativo: false, data: '25/05/2025 09:47' },
+  { id: 5,  nome: 'Novo teste',        email: 'email@emissor.com.br',        tel: '(61) 26176-2761',  cpf: '794.129.340-41', perfil: 'emissor',    comissao: null,  ativo: false, data: '25/05/2025 09:47' },
+  { id: 6,  nome: 'Emissor Senha',     email: 'senha@email.com',             tel: '(65) 4465-65456',  cpf: '706.748.850-82', perfil: 'emissor',    comissao: null,  ativo: true,  data: '04/12/2025 09:05' },
+  { id: 7,  nome: 'Maria Eduarda',     email: 'maria.eduarda@agencia.com',   tel: '(11) 98765-4321',  cpf: '321.456.789-09', perfil: 'financeiro', comissao: 15.00, ativo: true,  data: '12/03/2025 14:22' },
+  { id: 8,  nome: 'Carlos Mendes',     email: 'carlos.mendes@agencia.com',   tel: '(21) 91234-5678',  cpf: '987.654.321-00', perfil: 'emissor',    comissao: 12.50, ativo: true,  data: '08/02/2025 10:15' },
+  { id: 9,  nome: 'Ana Beatriz',       email: 'ana.beatriz@agencia.com',     tel: '(31) 99887-7665',  cpf: '456.789.012-34', perfil: 'emissor',    comissao: null,  ativo: true,  data: '20/01/2025 16:30' },
+  { id: 10, nome: 'Pedro Henrique',    email: 'pedro.h@agencia.com',         tel: '(41) 98765-1122',  cpf: '789.012.345-67', perfil: 'financeiro', comissao: null,  ativo: true,  data: '15/01/2025 08:00' },
+  { id: 11, nome: 'Juliana Rocha',     email: 'juliana.rocha@agencia.com',   tel: '(51) 91234-9876',  cpf: '234.567.890-12', perfil: 'emissor',    comissao: 8.00,  ativo: true,  data: '10/01/2025 11:45' },
+  { id: 12, nome: 'Roberto Silva',     email: 'roberto.silva@agencia.com',   tel: '(61) 99876-5544',  cpf: '567.890.123-45', perfil: 'financeiro', comissao: 20.00, ativo: true,  data: '05/01/2025 09:30' },
+  { id: 13, nome: 'Fernanda Costa',    email: 'fernanda.costa@agencia.com',  tel: '(71) 98765-3344',  cpf: '890.123.456-78', perfil: 'emissor',    comissao: null,  ativo: true,  data: '02/01/2025 15:20' },
+  { id: 14, nome: 'Lucas Almeida',     email: 'lucas.almeida@agencia.com',   tel: '(81) 91234-7788',  cpf: '345.678.901-23', perfil: 'emissor',    comissao: null,  ativo: true,  data: '28/12/2024 13:00' },
+  { id: 15, nome: 'Patrícia Souza',    email: 'patricia.souza@agencia.com',  tel: '(91) 99887-2211',  cpf: '678.901.234-56', perfil: 'emissor',    comissao: 11.00, ativo: true,  data: '20/12/2024 10:00' },
+  { id: 16, nome: 'Rafael Mendes',     email: 'rafael.mendes@agencia.com',   tel: '(12) 98765-1199',  cpf: '901.234.567-89', perfil: 'emissor',    comissao: null,  ativo: true,  data: '15/12/2024 16:45' },
+  { id: 17, nome: 'Camila Ribeiro',    email: 'camila.ribeiro@agencia.com',  tel: '(22) 91234-6677',  cpf: '123.789.456-12', perfil: 'financeiro', comissao: null,  ativo: true,  data: '10/12/2024 12:00' },
+  { id: 18, nome: 'Eduardo Lima',      email: 'eduardo.lima@agencia.com',    tel: '(32) 99887-1100',  cpf: '456.123.789-34', perfil: 'emissor',    comissao: null,  ativo: false, data: '01/12/2024 09:30' },
+  { id: 19, nome: 'Bianca Teixeira',   email: 'bianca.t@agencia.com',        tel: '(42) 98765-5566',  cpf: '789.456.123-56', perfil: 'emissor',    comissao: null,  ativo: false, data: '25/11/2024 14:15' },
+  { id: 20, nome: 'Henrique Sales',    email: 'henrique.sales@agencia.com',  tel: '(52) 91234-2233',  cpf: '012.789.456-78', perfil: 'emissor',    comissao: null,  ativo: true,  data: '15/11/2024 11:00' },
+  { id: 21, nome: 'Vanessa Pinto',     email: 'vanessa.pinto@agencia.com',   tel: '(62) 99887-3344',  cpf: '345.012.789-90', perfil: 'emissor',    comissao: 9.50,  ativo: true,  data: '10/11/2024 17:00' },
+  { id: 22, nome: 'Bruno Araújo',      email: 'bruno.araujo@agencia.com',    tel: '(72) 98765-4455',  cpf: '678.345.012-12', perfil: 'financeiro', comissao: 18.00, ativo: true,  data: '05/11/2024 08:30' },
+  { id: 23, nome: 'Daniela Cunha',     email: 'daniela.cunha@agencia.com',   tel: '(82) 91234-5566',  cpf: '901.678.345-34', perfil: 'emissor',    comissao: null,  ativo: true,  data: '01/11/2024 13:30' },
+  { id: 24, nome: 'Adriana Moreira',   email: 'adriana.m@agencia.com',       tel: '(92) 99887-6677',  cpf: '234.901.678-56', perfil: 'emissor',    comissao: null,  ativo: false, data: '20/10/2024 10:00' },
+];

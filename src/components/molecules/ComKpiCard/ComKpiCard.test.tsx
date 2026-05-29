@@ -26,4 +26,11 @@ describe('ComKpiCard', () => {
     );
     expect((container.firstChild as HTMLElement).className).toMatch(/warning/);
   });
+
+  it('aplica classe danger quando colorVariant é danger', () => {
+    const { container } = render(
+      <ComKpiCard label="A" value="1" sub="sub" colorVariant="danger" />,
+    );
+    expect((container.firstChild as HTMLElement).className).toMatch(/danger/);
+  });
 });

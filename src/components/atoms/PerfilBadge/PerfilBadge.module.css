@@ -1,0 +1,23 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  max-width: 100%;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  white-space: nowrap;
+  flex: none;
+}
+
+.emissor {
+  background: var(--bg-brand-soft);
+  color: var(--sabemi-blue);
+}
+
+.financeiro {
+  background: #ddebd6;
+  color: #2e6b1a;
+}

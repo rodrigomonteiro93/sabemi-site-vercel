@@ -4,7 +4,7 @@ interface ComKpiCardProps {
   label: string;
   value: string;
   sub: string;
-  colorVariant?: 'default' | 'success' | 'warning';
+  colorVariant?: 'default' | 'success' | 'warning' | 'danger';
 }
 
 export default function ComKpiCard({ label, value, sub, colorVariant = 'default' }: ComKpiCardProps) {
