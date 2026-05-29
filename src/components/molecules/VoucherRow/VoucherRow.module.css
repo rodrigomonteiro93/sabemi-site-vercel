@@ -1,0 +1,232 @@
+.vrow {
+  padding: 16px 22px;
+  border-bottom: 1px solid #eef2f6;
+  cursor: pointer;
+  transition: background var(--dur-base);
+}
+.vrow:last-child {
+  border-bottom: 0;
+}
+.vrow:hover {
+  background: #fafcfe;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.9fr) minmax(118px, 1.08fr) minmax(0, 0.95fr) minmax(132px, 1.1fr) 40px;
+  gap: 14px;
+  align-items: center;
+}
+
+.client {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  overflow: hidden;
+}
+.clientInfo {
+  min-width: 0;
+  flex: 1;
+  line-height: 1.3;
+  overflow: hidden;
+}
+.name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--fg-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.vid {
+  font-size: 11.5px;
+  color: var(--fg-3);
+  margin-top: 2px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dest {
+  line-height: 1.3;
+  min-width: 0;
+  overflow: hidden;
+}
+.nameDest {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--fg-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.days {
+  font-size: 11.5px;
+  color: var(--fg-3);
+  margin-top: 3px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dates {
+  line-height: 1.35;
+  min-width: 0;
+}
+.range {
+  font-size: 13px;
+  color: var(--fg-1);
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+.rangeLine {
+  line-height: 1.3;
+  white-space: nowrap;
+}
+.whenTag {
+  font-size: 11px;
+  margin-top: 4px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+.upcoming { color: var(--sabemi-cyan); }
+.ongoing  { color: var(--sabemi-blue); }
+.past     { color: var(--fg-3); }
+.cancelTag { color: #c4302b; }
+
+.value {
+  text-align: right;
+  line-height: 1.3;
+  min-width: 0;
+  overflow: hidden;
+}
+.v {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--sabemi-blue);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.comm {
+  font-size: 11.5px;
+  color: var(--success);
+  font-weight: 600;
+  margin-top: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.commNone {
+  color: var(--fg-3);
+}
+
+.status {
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+  flex-shrink: 0;
+}
+.menuBtn {
+  background: transparent;
+  border: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  color: var(--fg-3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--dur-base), color var(--dur-base);
+  flex-shrink: 0;
+}
+.menuBtn:hover {
+  background: var(--bg-brand-soft);
+  color: var(--sabemi-blue);
+}
+.menuPop {
+  position: absolute;
+  top: 38px;
+  right: 0;
+  background: #fff;
+  border: 1px solid #eef2f6;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  min-width: 210px;
+  padding: 6px;
+  z-index: 20;
+  display: none;
+}
+.menuPopOpen {
+  display: block;
+}
+.menuItem {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  text-align: left;
+  font: inherit;
+  font-size: 13px;
+  color: var(--fg-1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+.menuItem:hover {
+  background: var(--bg-brand-soft);
+  color: var(--sabemi-blue);
+}
+.menuItem svg {
+  color: var(--sabemi-cyan);
+  flex: none;
+}
+.menuDivider {
+  border: 0;
+  border-top: 1px solid #eef2f6;
+  margin: 4px 0;
+}
+.menuDanger {
+  color: #c4302b;
+}
+.menuDanger:hover {
+  background: #fdeae6;
+}
+.menuDanger svg {
+  color: #c4302b;
+}
+.menuDanger:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+@media (max-width: 1020px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .value {
+    text-align: left;
+  }
+}
