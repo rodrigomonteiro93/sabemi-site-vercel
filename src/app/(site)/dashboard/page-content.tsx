@@ -1,12 +1,12 @@
 import SiteHeader from '@/components/organisms/SiteHeader';
 import SiteFooter from '@/components/organisms/SiteFooter';
 import WhatsAppFab from '@/components/atoms/WhatsAppFab';
-import DashboardSidebar from '@/components/organisms/DashboardSidebar';
+import UserSidebar from '@/components/organisms/UserSidebar';
 import CambioPanel from '@/components/organisms/CambioPanel';
 import ComissoesPanel from '@/components/organisms/ComissoesPanel';
 import KpiSection from '@/components/organisms/KpiSection';
 import VoucherListSection from '@/components/organisms/VoucherListSection';
-import type { SideNavItem, ComissaoRow, VoucherItem, KpiItemData } from '@/lib/types/dashboard';
+import type { ComissaoRow, VoucherItem, KpiItemData } from '@/lib/types/dashboard';
 import styles from './page-content.module.css';
 
 interface CambioPanelData {
@@ -22,7 +22,6 @@ interface CambioPanelData {
 
 interface DashboardPageContentProps {
   agencyName: string;
-  navItems: SideNavItem[];
   cambio: CambioPanelData;
   comissoes: { rows: ComissaoRow[]; allHref: string };
   kpis: { title: string; items: KpiItemData[] };
@@ -31,7 +30,6 @@ interface DashboardPageContentProps {
 
 export default function DashboardPageContent({
   agencyName,
-  navItems,
   cambio,
   comissoes,
   kpis,
@@ -43,9 +41,8 @@ export default function DashboardPageContent({
       <main className={styles.page}>
         <div className={styles.container}>
           <div className={styles.dashGrid}>
-            <DashboardSidebar
+            <UserSidebar
               agencyName={agencyName}
-              navItems={navItems}
               cotarHref="/cotacao"
               copyLinkValue="https://sabemi.com.br/?ag=teste"
               copyRegisterLinkValue="https://sabemi.com.br/cadastro/?ag=teste"

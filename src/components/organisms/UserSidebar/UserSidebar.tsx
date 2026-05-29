@@ -1,13 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import Button from '@/components/atoms/Button';
-import type { SideNavItem } from '@/lib/types/dashboard';
-import styles from './DashboardSidebar.module.css';
+import { USER_NAV_ITEMS, isUserNavActive } from '@/lib/navigation/userNav';
+import styles from './UserSidebar.module.css';
 
-interface DashboardSidebarProps {
+interface UserSidebarProps {
   agencyName: string;
-  navItems: SideNavItem[];
   cotarHref: string;
   copyLinkValue: string;
   copyRegisterLinkValue: string;
@@ -27,13 +27,13 @@ const LogoutIcon = () => (
   </svg>
 );
 
-export default function DashboardSidebar({
+export default function UserSidebar({
   agencyName,
-  navItems,
   cotarHref,
   copyLinkValue,
   copyRegisterLinkValue,
-}: DashboardSidebarProps) {
+}: UserSidebarProps) {
+  const pathname = usePathname();
   const [copied, setCopied] = useState<'link' | 'register' | null>(null);
 
   async function handleCopy(type: 'link' | 'register') {
@@ -70,10 +70,11 @@ export default function DashboardSidebar({
       </div>
 
       <ul className={styles.sideNav}>
-        {navItems.map((item) => {
+        {USER_NAV_ITEMS.map((item) => {
+          const isActive = isUserNavActive(pathname, item.href);
           const linkClass = [
             styles.navLink,
-            item.active ? styles.navLinkActive : '',
+            isActive ? styles.navLinkActive : '',
             item.isSair ? styles.navLinkSair : '',
           ].filter(Boolean).join(' ');
 

@@ -1,45 +1,42 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi } from 'vitest';
-import DashboardSidebar from './DashboardSidebar';
-import type { SideNavItem } from '@/lib/types/dashboard';
+import UserSidebar from './UserSidebar';
 
-const navItems: SideNavItem[] = [
-  { label: 'Dashboard', href: '/dashboard', active: true },
-  { label: 'Vouchers', href: '/vouchers' },
-  { label: 'Sair', href: '/login', isSair: true },
-];
+vi.mock('next/navigation', () => ({
+  usePathname: () => '/dashboard',
+}));
 
 const defaultProps = {
   agencyName: 'Agência Teste',
-  navItems,
   cotarHref: '/cotacao',
   copyLinkValue: 'https://sabemi.com.br/?ag=teste',
   copyRegisterLinkValue: 'https://sabemi.com.br/cadastro/?ag=teste',
 };
 
-describe('DashboardSidebar', () => {
+describe('UserSidebar', () => {
   it('renderiza nome da agência', () => {
-    render(<DashboardSidebar {...defaultProps} />);
+    render(<UserSidebar {...defaultProps} />);
     expect(screen.getByText('Agência Teste')).toBeInTheDocument();
   });
 
-  it('renderiza todos os navItems', () => {
-    render(<DashboardSidebar {...defaultProps} />);
+  it('renderiza todos os itens do menu padrão', () => {
+    render(<UserSidebar {...defaultProps} />);
 
     expect(screen.getByText('Dashboard')).toBeInTheDocument();
     expect(screen.getByText('Vouchers')).toBeInTheDocument();
+    expect(screen.getByText('Emissores e Subcontas')).toBeInTheDocument();
     expect(screen.getByText('Sair')).toBeInTheDocument();
   });
 
-  it('aplica classe active no item ativo', () => {
-    render(<DashboardSidebar {...defaultProps} />);
+  it('aplica classe active conforme a rota atual', () => {
+    render(<UserSidebar {...defaultProps} />);
     const activeLink = screen.getByText('Dashboard').closest('a');
     expect(activeLink?.className).toMatch(/navLinkActive/);
   });
 
   it('aplica estilo sair no item com isSair: true', () => {
-    render(<DashboardSidebar {...defaultProps} />);
+    render(<UserSidebar {...defaultProps} />);
     const sairLink = screen.getByText('Sair').closest('a');
     expect(sairLink?.className).toMatch(/navLinkSair/);
   });
@@ -48,7 +45,7 @@ describe('DashboardSidebar', () => {
     const user = userEvent.setup();
     const writeTextSpy = vi.spyOn(navigator.clipboard, 'writeText');
 
-    render(<DashboardSidebar {...defaultProps} />);
+    render(<UserSidebar {...defaultProps} />);
 
     await user.click(screen.getByRole('button', { name: 'Copiar meu link' }));
 

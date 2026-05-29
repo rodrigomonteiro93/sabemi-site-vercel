@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import DashboardPageContent from './page-content';
-import type { SideNavItem, ComissaoRow, VoucherItem, KpiItemData } from '@/lib/types/dashboard';
+import type { ComissaoRow, VoucherItem, KpiItemData } from '@/lib/types/dashboard';
 
 export const metadata: Metadata = {
   title: 'Dashboard | Sabemi',
@@ -28,23 +28,10 @@ const KPIS: KpiItemData[] = [
   { variant: 'faturas',   label: 'Faturas a vencer',   value: 'R$ 487',   valueSmall: ',20',      sub: '<b>3</b> faturas · próxima em 31/05'        },
 ];
 
-const NAV_ITEMS: SideNavItem[] = [
-  { label: 'Dashboard',             href: '/dashboard',       active: true },
-  { label: 'Vouchers',              href: '/vouchers'                      },
-  { label: 'Comissões',             href: '/comissoes'                     },
-  { label: 'Financeiro',            href: '/financeiro'                    },
-  { label: 'Tarifas Especiais',     href: '/tarifas-especiais'             },
-  { label: 'Emissores e Subcontas', href: '/emissores'                     },
-  { label: 'Markup',                href: '/markup'                        },
-  { label: 'White Label',           href: '/white-label'                   },
-  { label: 'Sair',                  href: '/login', isSair: true           },
-];
-
 export default function DashboardPage() {
   return (
     <DashboardPageContent
       agencyName="Agência Teste"
-      navItems={NAV_ITEMS}
       cambio={{
         date: '27 de maio de 2026',
         pair: 'USD → BRL · Dólar comercial',
