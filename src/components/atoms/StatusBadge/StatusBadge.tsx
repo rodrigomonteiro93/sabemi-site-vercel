@@ -1,6 +1,6 @@
 import styles from './StatusBadge.module.css';
 
-type StatusBadgeVariant = 'cancel' | 'emit' | 'pendente';
+type StatusBadgeVariant = 'cancel' | 'emit' | 'pendente' | 'liberada' | 'aguardando' | 'bloqueada';
 
 interface StatusBadgeProps {
   variant: StatusBadgeVariant;
@@ -10,6 +10,9 @@ const LABELS: Record<StatusBadgeVariant, string> = {
   cancel: 'Cancelado',
   emit: 'Emitido',
   pendente: 'Aguardando pagto',
+  liberada: 'Liberada',
+  aguardando: 'Aguardando',
+  bloqueada: 'Bloqueada',
 };
 
 export default function StatusBadge({ variant }: StatusBadgeProps) {

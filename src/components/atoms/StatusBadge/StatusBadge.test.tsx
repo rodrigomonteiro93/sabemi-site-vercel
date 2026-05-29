@@ -33,5 +33,25 @@ describe('StatusBadge', () => {
 
     rerender(<StatusBadge variant="pendente" />);
     expect(screen.getByText('Aguardando pagto')).toBeInTheDocument();
+
+    rerender(<StatusBadge variant="liberada" />);
+    expect(screen.getByText('Liberada')).toBeInTheDocument();
+
+    rerender(<StatusBadge variant="aguardando" />);
+    expect(screen.getByText('Aguardando')).toBeInTheDocument();
+
+    rerender(<StatusBadge variant="bloqueada" />);
+    expect(screen.getByText('Bloqueada')).toBeInTheDocument();
+  });
+
+  it('aplica classe de variante de comissão com dot', () => {
+    const { rerender } = render(<StatusBadge variant="liberada" />);
+    expect(screen.getByText('Liberada').className).toMatch(/liberada/);
+
+    rerender(<StatusBadge variant="aguardando" />);
+    expect(screen.getByText('Aguardando').className).toMatch(/aguardando/);
+
+    rerender(<StatusBadge variant="bloqueada" />);
+    expect(screen.getByText('Bloqueada').className).toMatch(/bloqueada/);
   });
 });

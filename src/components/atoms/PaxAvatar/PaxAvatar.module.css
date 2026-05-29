@@ -1,0 +1,18 @@
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  color: #fff;
+  flex: none;
+}
+
+.a1 { background: var(--sabemi-blue); }
+.a2 { background: var(--sabemi-cyan); }
+.a3 { background: var(--seg-teal); }
+.a4 { background: var(--af-orange); }
+.a5 { background: #6b59b7; }

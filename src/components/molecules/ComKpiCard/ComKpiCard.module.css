@@ -1,0 +1,34 @@
+.kpi {
+  background: #fff;
+  border: 1px solid #eef2f6;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lbl {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+
+.v {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--sabemi-blue);
+  letter-spacing: -0.01em;
+}
+
+.sub {
+  font-size: 11.5px;
+  color: var(--fg-3);
+  font-weight: 500;
+}
+
+.success .v { color: var(--success); }
+.warning .v { color: #b67e00; }

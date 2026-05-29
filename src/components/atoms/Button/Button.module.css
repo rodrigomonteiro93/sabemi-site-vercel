@@ -8,8 +8,16 @@
   cursor: pointer;
   letter-spacing: .02em;
   transition: background var(--dur-base) var(--ease-out), box-shadow var(--dur-base);
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   text-align: center;
+}
+
+.btn svg {
+  flex-shrink: 0;
+  display: block;
 }
 .primary {
   background: var(--sabemi-blue);

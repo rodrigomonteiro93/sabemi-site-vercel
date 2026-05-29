@@ -13,6 +13,7 @@ html, body { margin: 0; padding: 0; }
   --bg-brand-soft: #eaf3fb;
   --af-orange: #f57c00;
   --af-gold: #fbba00;
+  --seg-teal: #007a7c;
   --success: #2e9d6b;
 
   /* Tipografia — Mulish substitui Neo Sans (design-system/colors_and_type.css) */

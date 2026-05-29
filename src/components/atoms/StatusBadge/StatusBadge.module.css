@@ -34,3 +34,21 @@
   color: #b67e00;
 }
 .pendente::before { background: #b67e00; }
+
+.liberada {
+  background: #e9f5ee;
+  color: #1f7a4f;
+}
+.liberada::before { background: #1f7a4f; }
+
+.aguardando {
+  background: #fff4dc;
+  color: #b67e00;
+}
+.aguardando::before { background: #b67e00; }
+
+.bloqueada {
+  background: #fdeae6;
+  color: #c4302b;
+}
+.bloqueada::before { background: #c4302b; }
