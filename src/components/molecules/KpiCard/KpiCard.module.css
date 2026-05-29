@@ -1,0 +1,62 @@
+.kpi {
+  background: #fff;
+  border: 1px solid #eef2f6;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base);
+}
+.kpi:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.ico {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.k_vouchers .ico { background: var(--bg-brand-soft); color: var(--sabemi-blue); }
+.k_comissoes .ico { background: #fff4dc; color: #b67e00; }
+.k_faturas .ico { background: #fcecea; color: #c4302b; }
+
+.label {
+  font-size: 12.5px;
+  color: var(--fg-2);
+  font-weight: 600;
+}
+
+.v {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--fg-1);
+  letter-spacing: -0.01em;
+}
+.v small {
+  font-size: 14px;
+  color: var(--fg-2);
+  font-weight: 600;
+  margin-left: 6px;
+}
+
+.sub {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  color: var(--fg-3);
+}
+.sub :global(b) {
+  color: var(--fg-1);
+  font-weight: 700;
+}

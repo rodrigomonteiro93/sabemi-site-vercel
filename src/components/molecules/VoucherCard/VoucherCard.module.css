@@ -1,0 +1,83 @@
+.voucher {
+  background: #fff;
+  border: 1px solid #eef2f6;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.voucherHead {
+  background: var(--sabemi-blue);
+  color: #fff;
+  text-align: center;
+  padding: 12px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.voucherBody {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+}
+
+.summaryLabel {
+  padding: 18px 22px;
+  border-right: 1px solid #eef2f6;
+  font-size: 14px;
+  color: var(--fg-2);
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+
+.info {
+  padding: 14px 22px;
+  display: grid;
+  gap: 8px;
+}
+
+.infoRow {
+  display: grid;
+  grid-template-columns: 90px 1fr 90px 1fr auto;
+  align-items: center;
+  gap: 18px;
+  font-size: 13.5px;
+  padding: 6px 0;
+  border-bottom: 1px solid #f4f7fa;
+}
+.infoRow:last-child { border-bottom: 0; }
+
+.k {
+  font-weight: 700;
+  color: var(--fg-1);
+}
+.v { color: var(--fg-2); }
+.price { color: var(--sabemi-blue); font-weight: 700; }
+
+.det {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--sabemi-cyan);
+  text-decoration: none;
+}
+.det:hover { color: var(--sabemi-blue); }
+
+.urlLink {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--sabemi-cyan);
+  margin-left: 10px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.urlLink:hover { color: var(--sabemi-blue); }
+
+@media (max-width: 1020px) {
+  .voucherBody { grid-template-columns: 1fr; }
+  .summaryLabel { border-right: 0; border-bottom: 1px solid #eef2f6; }
+  .infoRow { grid-template-columns: 1fr; gap: 4px; padding: 8px 0; }
+}

@@ -7,7 +7,7 @@ import styles from './CompareModal.module.css';
 const SABEMI_BADGE = (
   <svg width="140" height="40" viewBox="0 0 130 36" aria-label="Sabemi">
     <path d="M4 30 L18 6 L32 30 Z" fill="#004077"/>
-    <text x="38" y="24" fontFamily="Mulish, sans-serif" fontSize="22" fontWeight="800" fill="#004077" letterSpacing="-0.5">Sabemi</text>
+    <text x="38" y="24" fontFamily="var(--font-sans)" fontSize="22" fontWeight="800" fill="#004077" letterSpacing="-0.5">Sabemi</text>
   </svg>
 );
 

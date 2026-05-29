@@ -1,0 +1,36 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .06em;
+}
+
+.badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.cancel {
+  background: #fdeae6;
+  color: #c4302b;
+}
+.cancel::before { background: #c4302b; }
+
+.emit {
+  background: #e9f5ee;
+  color: #1f7a4f;
+}
+.emit::before { background: #1f7a4f; }
+
+.pendente {
+  background: #fff4dc;
+  color: #b67e00;
+}
+.pendente::before { background: #b67e00; }

@@ -1,0 +1,37 @@
+.container {
+  background: var(--bg-brand-soft);
+  border-radius: var(--radius-lg);
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ico {
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border-radius: 999px;
+  color: var(--sabemi-blue);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+.txt {
+  flex: 1;
+}
+
+.t {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--sabemi-blue);
+  margin-bottom: 2px;
+}
+
+.d {
+  font-size: 12.5px;
+  color: var(--fg-2);
+  line-height: 1.5;
+}

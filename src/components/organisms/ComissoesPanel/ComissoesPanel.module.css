@@ -1,0 +1,57 @@
+.panel {
+  background: #fff;
+  border: 1px solid #eef2f6;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 24px;
+}
+
+.commHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.commHead h2 {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--fg-1);
+  margin: 0;
+}
+.commHead a {
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--sabemi-cyan);
+  text-decoration: none;
+}
+.commHead a:hover { color: var(--sabemi-blue); }
+
+.t {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+}
+.t th {
+  text-align: left;
+  background: var(--bg-brand-soft);
+  color: var(--sabemi-blue);
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 10px 14px;
+}
+.t th:first-child { border-radius: var(--radius-md) 0 0 var(--radius-md); }
+.t th:last-child { border-radius: 0 var(--radius-md) var(--radius-md) 0; text-align: right; }
+.t td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #eef2f6;
+  color: var(--fg-1);
+}
+.t td:last-child { text-align: right; }
+.t tr:last-child td { border-bottom: 0; }
+.t tr:hover td { background: #fafcfe; }
+.v { font-weight: 700; color: var(--sabemi-blue); }

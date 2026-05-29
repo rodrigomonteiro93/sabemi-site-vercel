@@ -8,13 +8,15 @@ html, body { margin: 0; padding: 0; }
   --sabemi-cyan: #008cc1;
   --sabemi-cyan-900: #007ba5;
   --sabemi-cyan-40: #99d1e6;
+  --sabemi-sky: #63b9e9;
   --sabemi-gray: #b0b8c1;
   --bg-brand-soft: #eaf3fb;
   --af-orange: #f57c00;
-  --success: #22c55e;
+  --af-gold: #fbba00;
+  --success: #2e9d6b;
 
-  /* Tipografia */
-  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Tipografia — Mulish substitui Neo Sans (design-system/colors_and_type.css) */
+  --font-sans: var(--font-mulish), "Neo Sans", "Encode Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
   --lh-normal: 1.5;
 
   /* Animação */
@@ -22,9 +24,14 @@ html, body { margin: 0; padding: 0; }
   --ease-out: cubic-bezier(0.0, 0.0, 0.2, 1);
 
   /* Radii & shadows */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
   --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px rgba(0, 64, 119, 0.06);
   --shadow-focus: 0 0 0 3px rgba(0, 140, 193, 0.25);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-md: 0 4px 12px rgba(0, 64, 119, 0.08);
+  --shadow-lg: 0 12px 32px rgba(0, 64, 119, 0.12);
 
   /* Texto */
   --fg-1: #1a2332;

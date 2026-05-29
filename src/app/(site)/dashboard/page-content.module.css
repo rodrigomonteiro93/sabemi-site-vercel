@@ -1,0 +1,44 @@
+.page {
+  flex: 1;
+  padding: 32px 0 56px;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.dashGrid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.sectionTtl {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--sabemi-blue);
+  margin: 0 0 16px;
+}
+
+.heroRow {
+  display: grid;
+  grid-template-columns: 1.05fr 1.3fr;
+  gap: 24px;
+}
+
+@media (max-width: 1020px) {
+  .dashGrid { grid-template-columns: 1fr; }
+  .heroRow { grid-template-columns: 1fr; }
+}

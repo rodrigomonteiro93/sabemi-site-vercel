@@ -1,0 +1,19 @@
+.sectionTtl2 {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--fg-1);
+  margin: 0 0 18px;
+  letter-spacing: -0.01em;
+}
+
+.voucherList {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.showAllWrap {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 22px;
+}

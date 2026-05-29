@@ -24,7 +24,7 @@ export default function PaxSummaryCard({
             <text
               x="38"
               y="24"
-              fontFamily="Mulish, sans-serif"
+              fontFamily="var(--font-sans)"
               fontSize="22"
               fontWeight="800"
               fill="#004077"

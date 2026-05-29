@@ -1,0 +1,35 @@
+.container {
+  background: var(--bg-brand-soft);
+  border: 1px dashed var(--sabemi-cyan);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.ico {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--sabemi-blue);
+  margin: 0 auto 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.ttl {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--sabemi-blue);
+  margin-bottom: 6px;
+}
+
+.desc {
+  font-size: 13px;
+  color: var(--fg-2);
+  line-height: 1.55;
+  max-width: 320px;
+  margin: 0 auto;
+}
