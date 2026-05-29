@@ -34,3 +34,19 @@ export interface FaturaData {
   netTotal: string;
   comissaoTotal: string;
 }
+
+export interface FaturaDetalheData {
+  id: string;
+  geradaEm: string;
+  heroTotalLabel: string;
+  heroTotal: string;
+  heroTotalSub: string;
+  statusVariant: FaturaStatusVariant;
+  statusSub: string;
+  statusSubLate: boolean;
+  infoItems: FaturaInfoItem[];
+  comissoes: FaturaComissaoItem[];
+  netTotal: string;
+  comissaoTotal: string;
+  totalItems: number;
+}
