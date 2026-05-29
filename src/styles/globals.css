@@ -6,7 +6,10 @@ html, body { margin: 0; padding: 0; }
   --sabemi-blue: #004077;
   --sabemi-blue-900: #002c52;
   --sabemi-cyan: #008cc1;
+  --sabemi-cyan-900: #007ba5;
+  --sabemi-cyan-40: #99d1e6;
   --sabemi-gray: #b0b8c1;
+  --bg-brand-soft: #eaf3fb;
   --af-orange: #f57c00;
   --success: #22c55e;
 
@@ -21,6 +24,7 @@ html, body { margin: 0; padding: 0; }
   /* Radii & shadows */
   --radius-pill: 999px;
   --shadow-focus: 0 0 0 3px rgba(0, 140, 193, 0.25);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
 
   /* Texto */
   --fg-1: #1a2332;

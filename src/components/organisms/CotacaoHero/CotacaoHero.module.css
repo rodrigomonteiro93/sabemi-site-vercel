@@ -1,0 +1,50 @@
+.pageHero {
+  position: relative;
+  height: 280px;
+  background:
+    linear-gradient(90deg, rgba(0,44,82,.05) 0%, rgba(0,44,82,.0) 35%, rgba(0,44,82,.0) 65%, rgba(0,44,82,.15) 100%),
+    url('https://images.unsplash.com/photo-1551632811-561732d1e306?w=2200&q=72') center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.duvidaCard {
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,.35);
+  margin-right: 40px;
+}
+.duvidaCard h2 {
+  font-size: 30px;
+  font-weight: 700;
+  margin: 0 0 14px;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+.btnPill {
+  background: var(--sabemi-blue);
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  padding: 12px 30px;
+  border-radius: 999px;
+  border: 0;
+  box-shadow: 0 6px 16px rgba(0,64,119,.32);
+  transition: background var(--dur-base) var(--ease-out), box-shadow var(--dur-base);
+  text-shadow: none;
+  cursor: pointer;
+}
+.btnPill:hover {
+  background: var(--sabemi-blue-900);
+  box-shadow: 0 10px 22px rgba(0,64,119,.42);
+}
+@media (max-width: 1100px) {
+  .duvidaCard { margin: 0 24px; }
+}
