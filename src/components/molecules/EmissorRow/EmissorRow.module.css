@@ -1,7 +1,7 @@
 .erowGrid {
   display: grid;
-  grid-template-columns: 260px 1fr 130px 130px 80px 110px 120px;
-  gap: 16px;
+  grid-template-columns: minmax(0, 1.55fr) minmax(88px, 0.95fr) minmax(88px, 0.9fr) 72px minmax(88px, 0.9fr) minmax(96px, 1fr);
+  gap: 14px;
   align-items: center;
 }
 
@@ -24,11 +24,14 @@
   align-items: center;
   gap: 12px;
   min-width: 0;
+  overflow: hidden;
 }
 
 .info {
   min-width: 0;
+  flex: 1;
   line-height: 1.3;
+  overflow: hidden;
 }
 
 .name {
@@ -50,34 +53,17 @@
   text-overflow: ellipsis;
 }
 
-.contact {
-  line-height: 1.3;
+.perfil {
   min-width: 0;
-}
-
-.email {
-  font-size: 13px;
-  color: var(--fg-1);
-  font-weight: 600;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.tel {
-  font-size: 11.5px;
-  color: var(--fg-3);
-  margin-top: 3px;
-  font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .comCell {
   font-size: 13.5px;
   font-weight: 700;
   color: var(--sabemi-blue);
+  min-width: 0;
+  white-space: nowrap;
 }
 
 .none {
@@ -85,10 +71,16 @@
   font-weight: 500;
 }
 
+.ativo {
+  flex-shrink: 0;
+}
+
 .dataCell {
   font-size: 12.5px;
   color: var(--fg-2);
   line-height: 1.3;
+  min-width: 0;
+  white-space: nowrap;
 }
 
 .dataHora {
@@ -102,6 +94,7 @@
   justify-content: flex-end;
   align-items: center;
   gap: 6px;
+  flex-shrink: 0;
 }
 
 .btnEdit {
@@ -119,6 +112,7 @@
   align-items: center;
   gap: 6px;
   transition: background var(--dur-base), color var(--dur-base);
+  white-space: nowrap;
 }
 
 .btnEdit:hover {
@@ -138,6 +132,7 @@
   justify-content: center;
   cursor: pointer;
   transition: background var(--dur-base), color var(--dur-base), border-color var(--dur-base);
+  flex-shrink: 0;
 }
 
 .btnDel:hover {

@@ -36,17 +36,12 @@ export default function EmissorRow({ item, avatarColorIndex, onEdit, onDelete, o
       <div className={styles.emissor}>
         <PaxAvatar initials={initials(item.nome)} colorIndex={avatarColorIndex} />
         <div className={styles.info}>
-          <div className={styles.name}>{item.nome}</div>
+          <div className={styles.name} title={item.nome}>{item.nome}</div>
           <div className={styles.doc}>CPF {item.cpf}</div>
         </div>
       </div>
 
-      <div className={styles.contact}>
-        <div className={styles.email} title={item.email}>{item.email}</div>
-        <div className={styles.tel}>{item.tel}</div>
-      </div>
-
-      <div>
+      <div className={styles.perfil}>
         <PerfilBadge variant={item.perfil} />
       </div>
 
@@ -54,7 +49,7 @@ export default function EmissorRow({ item, avatarColorIndex, onEdit, onDelete, o
         {comissaoText}
       </div>
 
-      <div>
+      <div className={styles.ativo}>
         <Switch
           checked={item.ativo}
           onChange={() => onToggleAtivo(item.id)}

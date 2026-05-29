@@ -17,7 +17,7 @@ const baseItem: EmissorItem = {
 };
 
 describe('EmissorRow', () => {
-  it('renderiza nome, CPF, email e telefone do item', () => {
+  it('renderiza nome e CPF do item', () => {
     render(
       <EmissorRow
         item={baseItem}
@@ -30,8 +30,6 @@ describe('EmissorRow', () => {
 
     expect(screen.getByText('João Silva')).toBeInTheDocument();
     expect(screen.getByText('CPF 123.456.789-00')).toBeInTheDocument();
-    expect(screen.getByText('joao@email.com')).toBeInTheDocument();
-    expect(screen.getByText('(11) 99999-9999')).toBeInTheDocument();
   });
 
   it('renderiza PerfilBadge com variant correto', () => {

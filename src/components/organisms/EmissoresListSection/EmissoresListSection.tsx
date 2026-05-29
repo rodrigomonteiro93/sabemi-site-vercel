@@ -224,7 +224,6 @@ export default function EmissoresListSection({ items }: EmissoresListSectionProp
 
         <div className={`${styles.erowHead} ${styles.erowGrid}`}>
           <div>Emissor</div>
-          <div>Contato</div>
           <div>Perfil</div>
           <div>Comissão</div>
           <div>Ativo</div>

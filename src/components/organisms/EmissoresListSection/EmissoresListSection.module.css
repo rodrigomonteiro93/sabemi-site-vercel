@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .pgTitleBar {
@@ -67,6 +69,7 @@
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
   overflow: hidden;
+  max-width: 100%;
 }
 
 .vboxHead {
@@ -77,6 +80,7 @@
   gap: 16px;
   flex-wrap: wrap;
   border-bottom: 1px solid #eef2f6;
+  min-width: 0;
 }
 
 .tabs {
@@ -161,8 +165,8 @@
 
 .erowGrid {
   display: grid;
-  grid-template-columns: 260px 1fr 130px 130px 80px 110px 120px;
-  gap: 16px;
+  grid-template-columns: minmax(0, 1.55fr) minmax(88px, 0.95fr) minmax(88px, 0.9fr) 72px minmax(88px, 0.9fr) minmax(96px, 1fr);
+  gap: 14px;
   align-items: center;
 }
 
