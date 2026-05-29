@@ -1,0 +1,96 @@
+.ctbl {
+  background: #fff;
+  border: 1px solid #eef2f6;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.ctblHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px 14px;
+  gap: 16px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #eef2f6;
+}
+
+.ctblTitle {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--sabemi-blue);
+  margin: 0;
+  letter-spacing: -0.005em;
+}
+
+.totals {
+  display: flex;
+  gap: 22px;
+  font-size: 12.5px;
+  color: var(--fg-2);
+}
+
+.totals b {
+  color: var(--sabemi-blue);
+  font-weight: 800;
+  margin-left: 6px;
+}
+
+.totalComissao {
+  color: var(--success) !important;
+}
+
+.crowGrid {
+  display: grid;
+  grid-template-columns: 100px 1fr 1.4fr 140px 110px 110px;
+  gap: 16px;
+  align-items: center;
+}
+
+.crowHead {
+  padding: 12px 22px;
+  background: var(--bg-brand-soft);
+  border-bottom: 1px solid #eef2f6;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--sabemi-blue);
+}
+
+.colR {
+  text-align: right;
+}
+
+.ctblFoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 22px;
+  border-top: 1px solid #eef2f6;
+  background: var(--bg-2);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footMeta {
+  font-size: 12.5px;
+  color: var(--fg-2);
+  font-weight: 500;
+}
+
+.footMeta b {
+  color: var(--fg-1);
+  font-weight: 700;
+}
+
+@media (max-width: 1020px) {
+  .crowGrid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .crowHead {
+    display: none;
+  }
+}

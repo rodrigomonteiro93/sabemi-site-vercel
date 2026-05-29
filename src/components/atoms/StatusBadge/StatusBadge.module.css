@@ -52,3 +52,27 @@
   color: #c4302b;
 }
 .bloqueada::before { background: #c4302b; }
+
+.recebida {
+  background: #e9f5ee;
+  color: #1f7a4f;
+}
+.recebida::before { background: #1f7a4f; }
+
+.vencida {
+  background: #fdeae6;
+  color: #c4302b;
+}
+.vencida::before { background: #c4302b; }
+
+.aberta {
+  background: var(--bg-brand-soft);
+  color: var(--sabemi-blue);
+}
+.aberta::before { background: var(--sabemi-blue); }
+
+.processando {
+  background: #fff4dc;
+  color: #b67e00;
+}
+.processando::before { background: #b67e00; }

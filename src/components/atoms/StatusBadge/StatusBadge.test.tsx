@@ -54,4 +54,22 @@ describe('StatusBadge', () => {
     rerender(<StatusBadge variant="bloqueada" />);
     expect(screen.getByText('Bloqueada').className).toMatch(/bloqueada/);
   });
+
+  it('renderiza variante vencida com label e classe corretos', () => {
+    render(<StatusBadge variant="vencida" />);
+    const badge = screen.getByText('Vencida');
+    expect(badge).toBeInTheDocument();
+    expect(badge.className).toMatch(/vencida/);
+  });
+
+  it('renderiza variantes de fatura recebida, aberta e processando', () => {
+    const { rerender } = render(<StatusBadge variant="recebida" />);
+    expect(screen.getByText('Recebida').className).toMatch(/recebida/);
+
+    rerender(<StatusBadge variant="aberta" />);
+    expect(screen.getByText('Aberta').className).toMatch(/aberta/);
+
+    rerender(<StatusBadge variant="processando" />);
+    expect(screen.getByText('Processando').className).toMatch(/processando/);
+  });
 });
