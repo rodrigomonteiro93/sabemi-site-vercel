@@ -1,0 +1,58 @@
+.page {
+  flex: 1;
+  padding: 64px 0 88px;
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.loginGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  position: relative;
+}
+
+.loginGrid::after {
+  content: '';
+  position: absolute;
+  top: 30px;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: #eef2f6;
+}
+
+.colRight {
+  text-align: center;
+  padding-top: 12px;
+}
+
+.colRightTitle {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--fg-1);
+  margin: 0 0 26px;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 880px) {
+  .loginGrid {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+
+  .loginGrid::after {
+    display: none;
+  }
+
+  .colRight {
+    padding-top: 36px;
+    border-top: 1px solid #eef2f6;
+  }
+}
