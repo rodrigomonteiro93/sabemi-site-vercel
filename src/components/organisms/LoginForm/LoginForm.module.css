@@ -28,22 +28,23 @@
 .remember input[type='checkbox'] {
   width: 16px;
   height: 16px;
-  accent-color: var(--sabemi-cyan);
+  accent-color: var(--sabemi-blue);
   cursor: pointer;
 }
 
-.submitWrap button {
-  display: block;
+form .submitWrap :is(button, a) {
+  display: flex;
   width: 100%;
   padding: 16px 28px;
   font-size: 14px;
   font-weight: 800;
+  line-height: 1.25;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   box-shadow: var(--shadow-sm);
 }
 
-.submitWrap button:hover {
+form .submitWrap :is(button, a):hover {
   background: var(--sabemi-blue);
   color: #fff;
   box-shadow: var(--shadow-md);
@@ -62,7 +63,7 @@
 }
 
 .forgot:hover {
-  color: var(--sabemi-cyan);
+  color: var(--sabemi-blue);
 }
 
 @media (max-width: 880px) {

@@ -1,6 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import SiteHeader from '@/components/organisms/SiteHeader/SiteHeader';
+import SiteFooter from '@/components/organisms/SiteFooter/SiteFooter';
+import WhatsAppFab from '@/components/atoms/WhatsAppFab/WhatsAppFab';
 import UserSidebar from '@/components/organisms/UserSidebar/UserSidebar';
 import BackLink from '@/components/atoms/BackLink/BackLink';
 import PageTitleBar from '@/components/molecules/PageTitleBar/PageTitleBar';
@@ -81,49 +84,54 @@ export default function FaturaDetalheContent({ fatura }: FaturaDetalheContentPro
   ];
 
   return (
-    <main className={styles.page}>
-      <div className={styles.container}>
-        <div className={styles.pageGrid}>
-          <UserSidebar
-            agencyName="Agência Teste"
-            cotarHref="/cotacao"
-            copyLinkValue="https://sabemi.com.br/ref/agencia-teste"
-            copyRegisterLinkValue="https://sabemi.com.br/cadastro/agencia-teste"
-          />
-
-          <section className={styles.content}>
-            <BackLink href="/financeiro">Voltar para Financeiro</BackLink>
-
-            <PageTitleBar
-              title={`Fatura #${fatura.id}`}
-              subtitle={fatura.geradaEm}
-              actions={titleActions}
+    <>
+      <SiteHeader />
+      <main className={styles.page}>
+        <div className={styles.container}>
+          <div className={styles.pageGrid}>
+            <UserSidebar
+              agencyName="Agência Teste"
+              cotarHref="/cotacao"
+              copyLinkValue="https://sabemi.com.br/ref/agencia-teste"
+              copyRegisterLinkValue="https://sabemi.com.br/cadastro/agencia-teste"
             />
 
-            <FaturaCard
-              id={fatura.id}
-              heroTotalLabel={fatura.heroTotalLabel}
-              heroTotal={fatura.heroTotal}
-              heroTotalSub={fatura.heroTotalSub}
-              statusVariant={fatura.statusVariant}
-              statusSub={fatura.statusSub}
-              statusSubLate={fatura.statusSubLate}
-              infoItems={fatura.infoItems}
-              onBoleto={handleBoleto}
-            />
+            <section className={styles.content}>
+              <BackLink href="/financeiro">Voltar para Financeiro</BackLink>
 
-            <FaturaComissoesSection
-              items={paginatedComissoes}
-              netTotal={fatura.netTotal}
-              comissaoTotal={fatura.comissaoTotal}
-              currentPage={currentPage}
-              totalPages={totalPages}
-              totalItems={fatura.totalItems}
-              onPageChange={setCurrentPage}
-            />
-          </section>
+              <PageTitleBar
+                title={`Fatura #${fatura.id}`}
+                subtitle={fatura.geradaEm}
+                actions={titleActions}
+              />
+
+              <FaturaCard
+                id={fatura.id}
+                heroTotalLabel={fatura.heroTotalLabel}
+                heroTotal={fatura.heroTotal}
+                heroTotalSub={fatura.heroTotalSub}
+                statusVariant={fatura.statusVariant}
+                statusSub={fatura.statusSub}
+                statusSubLate={fatura.statusSubLate}
+                infoItems={fatura.infoItems}
+                onBoleto={handleBoleto}
+              />
+
+              <FaturaComissoesSection
+                items={paginatedComissoes}
+                netTotal={fatura.netTotal}
+                comissaoTotal={fatura.comissaoTotal}
+                currentPage={currentPage}
+                totalPages={totalPages}
+                totalItems={fatura.totalItems}
+                onPageChange={setCurrentPage}
+              />
+            </section>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+      <SiteFooter />
+      <WhatsAppFab />
+    </>
   );
 }

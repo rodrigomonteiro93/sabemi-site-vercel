@@ -40,6 +40,8 @@ describe('FaturaComissoesSection', () => {
       />,
     );
 
+    expect(screen.getByRole('heading', { name: 'Comissões da fatura' })).toBeInTheDocument();
+    expect(screen.getByText(/comissões nesta fatura/)).toBeInTheDocument();
     expect(screen.getByText('Detalhamento')).toBeInTheDocument();
     expect(screen.getByText('R$ 166,06')).toBeInTheDocument();
     expect(screen.getByText('R$ 49,82')).toBeInTheDocument();
@@ -63,6 +65,6 @@ describe('FaturaComissoesSection', () => {
     expect(screen.getByText(/Página/)).toBeInTheDocument();
     expect(screen.getByText(/2 lançamentos/)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: '1' })).toHaveClass(/active/);
-    expect(screen.getByText(/Mostrando/)).toBeInTheDocument();
+    expect(screen.queryByText(/Mostrando \d+–\d+ de/)).not.toBeInTheDocument();
   });
 });

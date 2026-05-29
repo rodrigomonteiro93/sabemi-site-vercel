@@ -4,11 +4,13 @@ interface VideoCardProps {
   title: string;
   playLabel: string;
   imageUrl: string;
+  className?: string;
+  inCarousel?: boolean;
 }
 
-export default function VideoCard({ title, playLabel, imageUrl }: VideoCardProps) {
+export default function VideoCard({ title, playLabel, imageUrl, className, inCarousel }: VideoCardProps) {
   return (
-    <article className={styles.vcard}>
+    <article className={[styles.vcard, inCarousel && styles.inCarousel, className].filter(Boolean).join(' ')}>
       <div className={styles.vleft}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/assets/sabemi-logo-white.svg" alt="Sabemi" className={styles.brandLogo} />

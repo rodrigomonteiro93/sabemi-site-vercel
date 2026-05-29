@@ -1,3 +1,36 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.sectionTitle {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--fg-1);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.sectionMeta {
+  font-size: 12.5px;
+  color: var(--fg-3);
+  font-weight: 500;
+}
+
+.sectionMeta b {
+  color: var(--fg-1);
+  font-weight: 700;
+}
+
 .ctbl {
   background: #fff;
   border: 1px solid #eef2f6;

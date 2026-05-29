@@ -22,45 +22,58 @@ export default function FaturaComissoesSection({
   totalItems,
   onPageChange,
 }: FaturaComissoesSectionProps) {
+  const showingCount = items.length;
+
   return (
-    <div className={styles.ctbl}>
-      <div className={styles.ctblHead}>
-        <h3 className={styles.ctblTitle}>Detalhamento</h3>
-        <div className={styles.totals}>
-          <span>Valor NET total: <b>{netTotal}</b></span>
-          <span>Comissão total: <b className={styles.totalComissao}>{comissaoTotal}</b></span>
+    <div className={styles.wrap}>
+      <div className={styles.sectionHead}>
+        <h2 className={styles.sectionTitle}>Comissões da fatura</h2>
+        <div className={styles.sectionMeta}>
+          Mostrando <b>{showingCount}</b> de <b>{totalItems}</b> comissões nesta fatura
         </div>
       </div>
 
-      <div className={`${styles.crowHead} ${styles.crowGrid}`}>
-        <div>Voucher</div>
-        <div>Plano</div>
-        <div>Passageiro</div>
-        <div>Emissor</div>
-        <div className={styles.colR}>Valor comissão</div>
-        <div className={styles.colR}>Valor NET</div>
-      </div>
-
-      {items.map((item, i) => (
-        <FaturaComRow
-          key={`${item.id}-${i}`}
-          item={item}
-          avatarColorIndex={((i % 5) + 1) as 1 | 2 | 3 | 4 | 5}
-        />
-      ))}
-
-      <div className={styles.ctblFoot}>
-        <div className={styles.footMeta}>
-          Página <b>{currentPage}</b> de <b>{totalPages}</b> · {totalItems} lançamentos
+      <div className={styles.ctbl}>
+        <div className={styles.ctblHead}>
+          <h3 className={styles.ctblTitle}>Detalhamento</h3>
+          <div className={styles.totals}>
+            <span>Valor NET total: <b>{netTotal}</b></span>
+            <span>Comissão total: <b className={styles.totalComissao}>{comissaoTotal}</b></span>
+          </div>
         </div>
-        <PaginationBar
-          pageFrom={(currentPage - 1) * items.length + 1}
-          pageTo={currentPage * items.length}
-          total={totalItems}
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={onPageChange}
-        />
+
+        <div className={`${styles.crowHead} ${styles.crowGrid}`}>
+          <div>Voucher</div>
+          <div>Plano</div>
+          <div>Passageiro</div>
+          <div>Emissor</div>
+          <div className={styles.colR}>Valor comissão</div>
+          <div className={styles.colR}>Valor NET</div>
+        </div>
+
+        {items.map((item, i) => (
+          <FaturaComRow
+            key={`${item.id}-${i}`}
+            item={item}
+            avatarColorIndex={((i % 5) + 1) as 1 | 2 | 3 | 4 | 5}
+          />
+        ))}
+
+        <div className={styles.ctblFoot}>
+          <div className={styles.footMeta}>
+            Página <b>{currentPage}</b> de <b>{totalPages}</b> · {totalItems} lançamentos
+          </div>
+          <PaginationBar
+            pageFrom={(currentPage - 1) * items.length + 1}
+            pageTo={Math.min(currentPage * items.length, totalItems)}
+            total={totalItems}
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={onPageChange}
+            showRangeMeta={false}
+            embedded
+          />
+        </div>
       </div>
     </div>
   );

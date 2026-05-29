@@ -9,6 +9,10 @@ interface PaginationBarProps {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
+  /** Exibe "Mostrando X–Y de Z" à esquerda. Padrão: true */
+  showRangeMeta?: boolean;
+  /** Sem borda/padding próprios — para uso dentro de rodapé de tabela */
+  embedded?: boolean;
 }
 
 function buildPages(current: number, total: number): (number | '...')[] {
@@ -24,15 +28,18 @@ function buildPages(current: number, total: number): (number | '...')[] {
 }
 
 export default function PaginationBar({
-  pageFrom, pageTo, total, currentPage, totalPages, onPageChange,
+  pageFrom,
+  pageTo,
+  total,
+  currentPage,
+  totalPages,
+  onPageChange,
+  showRangeMeta = true,
+  embedded = false,
 }: PaginationBarProps) {
   const pages = buildPages(currentPage, totalPages);
 
-  return (
-    <div className={styles.pagination}>
-      <div className={styles.meta}>
-        Mostrando <b>{pageFrom}</b>–<b>{pageTo}</b> de <b>{total}</b>
-      </div>
+  const pagi = (
       <div className={styles.pagi}>
         <button
           className={styles.pageBtn}
@@ -62,6 +69,20 @@ export default function PaginationBar({
           ›
         </button>
       </div>
+  );
+
+  if (embedded) {
+    return pagi;
+  }
+
+  return (
+    <div className={styles.pagination}>
+      {showRangeMeta && (
+        <div className={styles.meta}>
+          Mostrando <b>{pageFrom}</b>–<b>{pageTo}</b> de <b>{total}</b>
+        </div>
+      )}
+      {pagi}
     </div>
   );
 }

@@ -41,6 +41,23 @@
   letter-spacing: -0.01em;
 }
 
+.cadastrarWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.loginGrid .cadastrarWrap a {
+  display: inline-flex;
+  width: auto;
+  padding: 16px 48px;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  box-shadow: var(--shadow-md);
+}
+
 @media (max-width: 880px) {
   .loginGrid {
     grid-template-columns: 1fr;

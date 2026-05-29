@@ -17,7 +17,11 @@ export default function LoginContent() {
             </section>
             <section className={styles.colRight}>
               <h2 className={styles.colRightTitle}>Não tem conta?</h2>
-              <Button variant="primary" href="/cadastro">Cadastrar-se</Button>
+              <div className={styles.cadastrarWrap}>
+                <Button variant="primary" href="/cadastro">
+                  Cadastrar-se
+                </Button>
+              </div>
             </section>
           </div>
         </div>

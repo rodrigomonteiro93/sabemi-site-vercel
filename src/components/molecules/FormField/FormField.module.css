@@ -20,10 +20,10 @@
 .input,
 .select {
   width: 100%;
-  border: 1px solid var(--sabemi-cyan);
+  border: 1px solid var(--sabemi-blue);
   border-radius: var(--radius-pill);
   background: #fff;
-  padding: 14px 22px;
+  padding: 16px 22px;
   font-size: 14px;
   color: var(--fg-1);
   outline: none;
@@ -35,18 +35,26 @@
   color: var(--fg-3);
 }
 
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
+  -webkit-text-fill-color: var(--fg-1);
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 .input:focus,
 .select:focus {
   box-shadow: var(--shadow-focus);
-  border-color: var(--sabemi-cyan);
+  border-color: var(--sabemi-blue);
 }
 
 .select {
   appearance: none;
   -webkit-appearance: none;
   background-image:
-    linear-gradient(45deg, transparent 50%, var(--sabemi-cyan) 50%),
-    linear-gradient(135deg, var(--sabemi-cyan) 50%, transparent 50%);
+    linear-gradient(45deg, transparent 50%, var(--sabemi-blue) 50%),
+    linear-gradient(135deg, var(--sabemi-blue) 50%, transparent 50%);
   background-position: calc(100% - 22px) 22px, calc(100% - 17px) 22px;
   background-size: 5px 5px;
   background-repeat: no-repeat;
@@ -56,7 +64,7 @@
 
 .pwdToggle {
   position: absolute;
-  right: 16px;
+  right: 14px;
   top: 50%;
   transform: translateY(-50%);
   background: transparent;

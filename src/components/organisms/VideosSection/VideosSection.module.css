@@ -17,9 +17,6 @@
 .videos h2 { font-size: 28px; font-weight: 700; margin: 0; }
 .hint { font-size: 14px; opacity: .9; margin-top: 6px; }
 .videoRow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 22px;
 }
 .arrowSide {
@@ -35,6 +32,3 @@
 .arrowSide:hover { background: rgba(255,255,255,.35); }
 .videosCta { display: flex; justify-content: center; margin-top: 36px; }
 
-@media (max-width: 980px) {
-  .videoRow { flex-direction: column; }
-}

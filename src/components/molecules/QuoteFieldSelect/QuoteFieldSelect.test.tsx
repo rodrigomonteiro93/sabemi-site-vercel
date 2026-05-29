@@ -15,7 +15,7 @@ describe('QuoteFieldSelect', () => {
       />,
     );
 
-    expect(screen.getByLabelText('Destino')).toHaveValue('');
+    expect(screen.getByText('Selecione o destino')).toBeInTheDocument();
   });
 
   it('exibe label da opção selecionada', () => {
@@ -28,7 +28,7 @@ describe('QuoteFieldSelect', () => {
       />,
     );
 
-    expect(screen.getByLabelText('Destino')).toHaveValue('BR');
+    expect(screen.getByText('Brasil')).toBeInTheDocument();
   });
 
   it('chama onChange ao selecionar option', async () => {
@@ -48,7 +48,29 @@ describe('QuoteFieldSelect', () => {
       />,
     );
 
-    await user.selectOptions(screen.getByLabelText('Destino'), 'AR');
+    await user.click(screen.getByRole('button', { name: 'Destino' }));
+    await user.click(screen.getByRole('option', { name: 'Argentina' }));
     expect(onChange).toHaveBeenCalledWith('AR');
+  });
+
+  it('exibe grupos no dropdown', async () => {
+    const user = userEvent.setup();
+
+    render(
+      <QuoteFieldSelect
+        label="Destino"
+        groups={[
+          { label: 'Brasil', options: [{ value: 'BR', label: 'Brasil (Nacional)' }] },
+          { label: 'América do Sul', options: [{ value: 'AR', label: 'Argentina' }] },
+        ]}
+        value=""
+        onChange={vi.fn()}
+        placeholder="Para onde você vai viajar? *"
+      />,
+    );
+
+    await user.click(screen.getByRole('button', { name: 'Destino' }));
+    expect(screen.getByText('América do Sul')).toBeInTheDocument();
+    expect(screen.getByRole('option', { name: 'Argentina' })).toBeInTheDocument();
   });
 });
