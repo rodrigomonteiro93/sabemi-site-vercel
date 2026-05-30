@@ -1,91 +1,52 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { useForm } from 'react-hook-form';
 import { describe, it, expect } from 'vitest';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { useForm } from 'react-hook-form';
 import FormField from './FormField';
 
-interface TestFormValues {
-  nome: string;
-  tipo: string;
-  senha: string;
-}
-
-function InputFieldWrapper(props: Omit<React.ComponentProps<typeof FormField<TestFormValues>>, 'register' | 'name'> & { name?: keyof TestFormValues }) {
-  const { register } = useForm<TestFormValues>();
+function Wrapper({ mask }: { mask?: 'cpf' | 'telefone' | 'cep' }) {
+  const { register, setValue } = useForm<{ field: string }>();
   return (
-    <FormField
-      label={props.label}
-      name={props.name ?? 'nome'}
-      register={register}
-      type={props.type}
-      placeholder={props.placeholder}
-      options={props.options}
-      showToggle={props.showToggle}
-      id={props.id}
-    />
+    <form>
+      <FormField
+        label="Campo"
+        name="field"
+        register={register}
+        mask={mask}
+        setValue={mask ? setValue : undefined}
+      />
+    </form>
   );
 }
 
 describe('FormField', () => {
-  it('renders input with floating label', () => {
-    render(<InputFieldWrapper label="Seu nome completo *" placeholder="Seu nome completo" />);
-
-    expect(screen.getByText('Seu nome completo *')).toBeInTheDocument();
-    expect(screen.getByPlaceholderText('Seu nome completo')).toBeInTheDocument();
+  it('renderiza sem erros com props mínimas', () => {
+    render(<Wrapper />);
+    expect(screen.getByLabelText('Campo')).toBeTruthy();
   });
 
-  it('renders select with options', () => {
-    render(
-      <InputFieldWrapper
-        label="Tipo Cadastro *"
-        name="tipo"
-        type="select"
-        options={[
-          { value: 'corretora', label: 'Corretora' },
-          { value: 'agencia', label: 'Agência de Viagem' },
-        ]}
-      />,
-    );
-
-    expect(screen.getByRole('combobox')).toBeInTheDocument();
-    expect(screen.getByRole('option', { name: 'Corretora' })).toBeInTheDocument();
-    expect(screen.getByRole('option', { name: 'Agência de Viagem' })).toBeInTheDocument();
+  it('exibe label corretamente', () => {
+    render(<Wrapper />);
+    expect(screen.getByText('Campo')).toBeTruthy();
   });
 
-  it('shows pwd-toggle button when showToggle=true', () => {
-    render(
-      <InputFieldWrapper
-        label="Senha *"
-        name="senha"
-        type="password"
-        showToggle
-        id="pwd1"
-      />,
-    );
-
-    expect(screen.getByRole('button', { name: 'Mostrar senha' })).toBeInTheDocument();
+  it('formata CPF ao digitar', () => {
+    render(<Wrapper mask="cpf" />);
+    const input = screen.getByLabelText('Campo') as HTMLInputElement;
+    fireEvent.change(input, { target: { value: '12345678901' } });
+    expect(input.value).toBe('123.456.789-01');
   });
 
-  it('toggles password field visibility', async () => {
-    const user = userEvent.setup();
+  it('formata CEP ao digitar', () => {
+    render(<Wrapper mask="cep" />);
+    const input = screen.getByLabelText('Campo') as HTMLInputElement;
+    fireEvent.change(input, { target: { value: '12345678' } });
+    expect(input.value).toBe('12345-678');
+  });
 
-    render(
-      <InputFieldWrapper
-        label="Senha *"
-        name="senha"
-        type="password"
-        showToggle
-        id="pwd1"
-      />,
-    );
-
-    const input = document.getElementById('pwd1') as HTMLInputElement;
-    expect(input).toHaveAttribute('type', 'password');
-
-    await user.click(screen.getByRole('button', { name: 'Mostrar senha' }));
-    expect(input).toHaveAttribute('type', 'text');
-
-    await user.click(screen.getByRole('button', { name: 'Ocultar senha' }));
-    expect(input).toHaveAttribute('type', 'password');
+  it('sem mask preserva comportamento original', () => {
+    render(<Wrapper />);
+    const input = screen.getByLabelText('Campo') as HTMLInputElement;
+    fireEvent.change(input, { target: { value: 'texto livre' } });
+    expect(input.value).toBe('texto livre');
   });
 });

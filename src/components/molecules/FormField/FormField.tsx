@@ -1,7 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { UseFormRegister, FieldValues, Path } from 'react-hook-form';
+import {
+  UseFormRegister,
+  UseFormSetValue,
+  FieldValues,
+  Path,
+  PathValue,
+} from 'react-hook-form';
+import { applyMask, MaskType } from '@/lib/utils/masks';
 import styles from './FormField.module.css';
 
 export interface SelectOption {
@@ -19,6 +26,8 @@ export interface FormFieldProps<T extends FieldValues> {
   options?: SelectOption[];
   showToggle?: boolean;
   error?: string;
+  mask?: MaskType;
+  setValue?: UseFormSetValue<T>;
 }
 
 export default function FormField<T extends FieldValues>({
@@ -31,17 +40,32 @@ export default function FormField<T extends FieldValues>({
   options,
   showToggle = false,
   error,
+  mask,
+  setValue,
 }: FormFieldProps<T>) {
   const [showingPwd, setShowingPwd] = useState(false);
+  const inputId = id ?? String(name);
+
+  const { onChange: rhfOnChange, ...rest } = register(name);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (mask && setValue) {
+      const masked = applyMask(e.target.value, mask);
+      e.target.value = masked;
+      setValue(name, masked as PathValue<T, Path<T>>, { shouldValidate: true });
+    } else {
+      rhfOnChange(e);
+    }
+  };
 
   return (
     <div className={styles.field}>
-      <label className={styles.label}>{label}</label>
+      <label className={styles.label} htmlFor={inputId}>{label}</label>
 
       {type === 'select' ? (
         <select
           className={styles.select}
-          id={id}
+          id={inputId}
           {...register(name)}
         >
           {options?.map((o) => (
@@ -55,8 +79,9 @@ export default function FormField<T extends FieldValues>({
           className={styles.input}
           type={showToggle ? (showingPwd ? 'text' : 'password') : type}
           placeholder={placeholder}
-          id={id}
-          {...register(name)}
+          id={inputId}
+          {...rest}
+          onChange={handleChange}
         />
       )}
 
