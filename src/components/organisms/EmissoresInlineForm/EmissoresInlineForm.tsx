@@ -37,7 +37,7 @@ const PERFIL_OPTIONS = [
 ];
 
 export default function EmissoresInlineForm({ isOpen, editingItem, onClose, onSave }: EmissoresInlineFormProps) {
-  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<FormValues>({
+  const { register, setValue, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<FormValues>({
     resolver: zodResolver(schema),
   });
 
@@ -137,6 +137,8 @@ export default function EmissoresInlineForm({ isOpen, editingItem, onClose, onSa
               label="Telefone *"
               name="tel"
               register={register}
+              setValue={setValue}
+              mask="telefone"
               type="tel"
               placeholder="(99) 9999.9999"
               error={errors.tel?.message}
@@ -145,6 +147,8 @@ export default function EmissoresInlineForm({ isOpen, editingItem, onClose, onSa
               label="CPF *"
               name="cpf"
               register={register}
+              setValue={setValue}
+              mask="cpf"
               type="text"
               placeholder="999.999.999-99"
               error={errors.cpf?.message}

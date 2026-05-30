@@ -41,6 +41,12 @@ describe('UserSidebar', () => {
     expect(sairLink?.className).toMatch(/navLinkSair/);
   });
 
+  it('item Sair aponta para /logout', () => {
+    render(<UserSidebar {...defaultProps} />);
+    const sairLink = screen.getByText('Sair').closest('a');
+    expect(sairLink).toHaveAttribute('href', '/logout');
+  });
+
   it('botão "Copiar meu link" chama navigator.clipboard.writeText', async () => {
     const user = userEvent.setup();
     const writeTextSpy = vi.spyOn(navigator.clipboard, 'writeText');

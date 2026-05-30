@@ -67,6 +67,7 @@ export default function CadastroForm() {
 
   const {
     register,
+    setValue,
     handleSubmit,
     watch,
     formState: { errors, isSubmitting },
@@ -122,6 +123,8 @@ export default function CadastroForm() {
           name="telefone"
           type="tel"
           register={register}
+          setValue={setValue}
+          mask="telefone"
           placeholder="(99) 9999.9999"
           error={errors.telefone?.message}
         />
@@ -132,6 +135,8 @@ export default function CadastroForm() {
           label="CPF *"
           name="cpf"
           register={register}
+          setValue={setValue}
+          mask="cpf"
           placeholder="999.999.999-99"
           error={errors.cpf?.message}
         />
@@ -139,6 +144,8 @@ export default function CadastroForm() {
           label="Data de Nascimento *"
           name="dataNascimento"
           register={register}
+          setValue={setValue}
+          mask="data"
           placeholder="99/99/9999"
           error={errors.dataNascimento?.message}
         />
@@ -167,6 +174,8 @@ export default function CadastroForm() {
           label="CNPJ *"
           name="cnpj"
           register={register}
+          setValue={setValue}
+          mask="cnpj"
           placeholder="99.999.999/9999-99"
           error={errors.cnpj?.message}
         />
@@ -199,6 +208,8 @@ export default function CadastroForm() {
           label="CEP *"
           name="cep"
           register={register}
+          setValue={setValue}
+          mask="cep"
           placeholder="00000-000"
           error={errors.cep?.message}
         />

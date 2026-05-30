@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { generateMockVouchers } from '@/lib/types/vouchers';
+import { getVouchers } from '@/lib/api/vouchers';
 import VouchersContent from './page-content';
 
 export const metadata: Metadata = {
@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: 'Consulte seus vouchers de seguro viagem emitidos, aguardando ou cancelados.',
 };
 
-export default function VouchersPage() {
-  const items = generateMockVouchers();
+export default async function VouchersPage() {
+  const items = await getVouchers();
   return <VouchersContent items={items} agencyName="Agência Teste" />;
 }

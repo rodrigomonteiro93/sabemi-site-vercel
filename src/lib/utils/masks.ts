@@ -1,4 +1,4 @@
-export type MaskType = 'telefone' | 'cpf' | 'cnpj' | 'cpf-cnpj' | 'cep';
+export type MaskType = 'telefone' | 'cpf' | 'cnpj' | 'cpf-cnpj' | 'cep' | 'data';
 
 function digits(value: string): string {
   return value.replace(/\D/g, '');
@@ -33,6 +33,13 @@ function maskCpfCnpj(value: string): string {
   return maskCnpj(value);
 }
 
+function maskData(value: string): string {
+  const d = digits(value).slice(0, 8);
+  if (d.length <= 2) return d;
+  if (d.length <= 4) return `${d.slice(0, 2)}/${d.slice(2)}`;
+  return `${d.slice(0, 2)}/${d.slice(2, 4)}/${d.slice(4)}`;
+}
+
 function maskTelefone(value: string): string {
   const d = digits(value).slice(0, 11);
   if (d.length <= 2) return d.length ? `(${d}` : '';
@@ -55,5 +62,7 @@ export function applyMask(value: string, mask: MaskType): string {
       return maskCpfCnpj(value);
     case 'telefone':
       return maskTelefone(value);
+    case 'data':
+      return maskData(value);
   }
 }

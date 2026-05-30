@@ -20,6 +20,7 @@ export default function EmissorCadastroForm() {
 
   const {
     register,
+    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm<EmissorFormData>({
@@ -123,6 +124,8 @@ export default function EmissorCadastroForm() {
               label="Telefone *"
               name="telefone"
               register={register}
+              setValue={setValue}
+              mask="telefone"
               type="tel"
               placeholder="(99) 9999.9999"
               error={errors.telefone?.message}
@@ -131,6 +134,8 @@ export default function EmissorCadastroForm() {
               label="CPF *"
               name="cpf"
               register={register}
+              setValue={setValue}
+              mask="cpf"
               type="text"
               placeholder="999.999.999-99"
               error={errors.cpf?.message}

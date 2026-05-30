@@ -13,6 +13,6 @@ describe('isUserNavActive', () => {
   });
 
   it('nunca marca Sair como ativo', () => {
-    expect(isUserNavActive('/login', '/login')).toBe(false);
+    expect(isUserNavActive('/logout', '/logout')).toBe(false);
   });
 });

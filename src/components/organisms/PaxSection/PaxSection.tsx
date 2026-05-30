@@ -40,11 +40,15 @@ export default function PaxSection({
 }: PaxSectionProps) {
   const {
     register,
+    setValue,
+    watch,
     formState: { errors },
   } = useForm<PaxFormData>({
     resolver: zodResolver(paxSchema),
     defaultValues: { plano: planName, tipoDoc: 'CPF', enderecoSource: 'informar', emergenciaSource: 'informar' },
   });
+
+  const tipoDoc = watch('tipoDoc');
 
   return (
     <section className={`${styles.paxSection} ${isCollapsed ? styles.collapsed : ''}`}>
@@ -111,6 +115,8 @@ export default function PaxSection({
             label="CPF *"
             name="documento"
             register={register}
+            setValue={tipoDoc === 'CPF' ? setValue : undefined}
+            mask={tipoDoc === 'CPF' ? 'cpf' : undefined}
             type="text"
             placeholder="000.000.000-00"
             error={errors.documento?.message}
@@ -140,6 +146,8 @@ export default function PaxSection({
             label="Telefone *"
             name="telefone"
             register={register}
+            setValue={setValue}
+            mask="telefone"
             type="tel"
             placeholder="(00) 00000-0000"
             error={errors.telefone?.message}
@@ -148,6 +156,8 @@ export default function PaxSection({
             label="Data de Nascimento *"
             name="nascimento"
             register={register}
+            setValue={setValue}
+            mask="data"
             type="text"
             placeholder="dd/mm/aaaa"
             error={errors.nascimento?.message}
@@ -173,6 +183,8 @@ export default function PaxSection({
             label="CEP *"
             name="cep"
             register={register}
+            setValue={setValue}
+            mask="cep"
             type="text"
             placeholder="00000-000"
             error={errors.cep?.message}
@@ -249,6 +261,8 @@ export default function PaxSection({
             label="Telefone Completo *"
             name="emergenciaTel"
             register={register}
+            setValue={setValue}
+            mask="telefone"
             type="tel"
             placeholder="(00) 00000-0000"
             error={errors.emergenciaTel?.message}

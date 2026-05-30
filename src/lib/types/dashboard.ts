@@ -30,3 +30,22 @@ export interface KpiItemData {
   valueSmall?: string;
   sub: string;
 }
+
+export interface CambioPanelData {
+  date: string;
+  pair: string;
+  currency: string;
+  value: string;
+  delta: string;
+  deltaType: 'up' | 'down';
+  updatedAt: string;
+  histHref: string;
+}
+
+export interface DashboardData {
+  agencyName: string;
+  cambio: CambioPanelData;
+  comissoes: { rows: ComissaoRow[]; allHref: string };
+  kpis: { title: string; items: KpiItemData[] };
+  vouchers: { title: string; vouchers: VoucherItem[]; allHref: string };
+}

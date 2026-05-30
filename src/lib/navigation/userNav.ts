@@ -9,11 +9,11 @@ export const USER_NAV_ITEMS: SideNavItem[] = [
   { label: 'Emissores e Subcontas', href: '/emissores' },
   { label: 'Markup', href: '/markup' },
   { label: 'White Label', href: '/white-label' },
-  { label: 'Sair', href: '/login', isSair: true },
+  { label: 'Sair', href: '/logout', isSair: true },
 ];
 
 export function isUserNavActive(pathname: string, href: string): boolean {
-  if (href === '/login') return false;
+  if (href === '/logout') return false;
   if (href === '/dashboard') return pathname === '/dashboard';
   return pathname === href || pathname.startsWith(`${href}/`);
 }

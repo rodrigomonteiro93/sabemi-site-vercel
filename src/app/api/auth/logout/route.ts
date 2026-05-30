@@ -1,8 +1,12 @@
 import { NextResponse } from 'next/server';
-import { cookies } from 'next/headers';
+import { clearAuthToken } from '@/lib/auth/clearAuthToken';
+
+export async function GET(request: Request) {
+  await clearAuthToken();
+  return NextResponse.redirect(new URL('/login', request.url));
+}
 
 export async function POST() {
-  const cookieStore = await cookies();
-  cookieStore.set('auth-token', '', { maxAge: 0, path: '/' });
+  await clearAuthToken();
   return NextResponse.json({ ok: true });
 }

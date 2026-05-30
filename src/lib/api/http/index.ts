@@ -3,10 +3,20 @@ import { httpVideosRepository } from '@/lib/api/http/videos';
 import { httpNewsRepository } from '@/lib/api/http/news';
 import { httpPartnersRepository } from '@/lib/api/http/partners';
 import { httpAuthRepository } from '@/lib/api/http/auth';
+import { httpDashboardRepository } from '@/lib/api/http/dashboard';
+import { httpComissoesRepository } from '@/lib/api/http/comissoes';
+import { httpFinanceiroRepository } from '@/lib/api/http/financeiro';
+import { httpVouchersRepository } from '@/lib/api/http/vouchers';
+import { httpEmissoresRepository } from '@/lib/api/http/emissores';
 
 export const httpProvider: ApiProvider = {
   videos: httpVideosRepository,
   news: httpNewsRepository,
   partners: httpPartnersRepository,
   auth: httpAuthRepository,
+  dashboard: httpDashboardRepository,
+  comissoes: httpComissoesRepository,
+  financeiro: httpFinanceiroRepository,
+  vouchers: httpVouchersRepository,
+  emissores: httpEmissoresRepository,
 };

@@ -20,6 +20,7 @@ export default function LoginForm() {
   const router = useRouter();
   const {
     register,
+    setValue,
     handleSubmit,
     setError,
     formState: { errors, isSubmitting },
@@ -52,6 +53,8 @@ export default function LoginForm() {
             label="CPF / CNPJ *"
             name="userId"
             register={register}
+            setValue={setValue}
+            mask="cpf-cnpj"
             type="text"
             placeholder="000.000.000-00"
             id="userId"

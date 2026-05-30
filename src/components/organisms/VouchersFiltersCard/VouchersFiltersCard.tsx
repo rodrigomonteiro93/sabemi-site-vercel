@@ -26,7 +26,7 @@ interface VouchersFiltersCardProps {
 }
 
 export default function VouchersFiltersCard({ isOpen, onFilter, onClear }: VouchersFiltersCardProps) {
-  const { register, handleSubmit, reset } = useForm<FormData>({
+  const { register, setValue, handleSubmit, reset } = useForm<FormData>({
     resolver: zodResolver(schema),
     defaultValues: {
       numeroPedido: '', nomePassageiro: '', cpf: '',
@@ -49,7 +49,7 @@ export default function VouchersFiltersCard({ isOpen, onFilter, onClear }: Vouch
           <div className={`${styles.row} ${styles.r3}`}>
             <FormField label="Número do pedido" name="numeroPedido" register={register} placeholder="0000000" />
             <FormField label="Nome passageiro" name="nomePassageiro" register={register} placeholder="nome do passageiro" />
-            <FormField label="CPF" name="cpf" register={register} placeholder="999.999.999-99" />
+            <FormField label="CPF" name="cpf" register={register} setValue={setValue} mask="cpf" placeholder="999.999.999-99" />
           </div>
           <div className={`${styles.row} ${styles.r2}`}>
             <FormField label="Data da emissão início" name="emissaoInicio" register={register} placeholder="dd/mm/aaaa" />

@@ -3,11 +3,14 @@ import SiteFooter from '@/components/organisms/SiteFooter/SiteFooter';
 import WhatsAppFab from '@/components/atoms/WhatsAppFab/WhatsAppFab';
 import UserSidebar from '@/components/organisms/UserSidebar/UserSidebar';
 import FinanceiroListSection from '@/components/organisms/FinanceiroListSection/FinanceiroListSection';
-import { generateMockFaturas } from '@/lib/types/financeiro';
+import type { FinanceiroItem } from '@/lib/types/financeiro';
 import styles from './page-content.module.css';
 
-export default function FinanceiroContent() {
-  const items = generateMockFaturas();
+interface FinanceiroContentProps {
+  items: FinanceiroItem[];
+}
+
+export default function FinanceiroContent({ items }: FinanceiroContentProps) {
 
   return (
     <>
