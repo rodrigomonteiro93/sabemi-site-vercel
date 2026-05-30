@@ -1,18 +1,34 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import LoginForm from './LoginForm';
+
+const pushMock = vi.fn();
 
 vi.mock('next/navigation', () => ({
   useRouter: () => ({
-    push: vi.fn(),
+    push: pushMock,
   }),
 }));
 
 describe('LoginForm', () => {
+  beforeEach(() => {
+    pushMock.mockClear();
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
   it('renderiza sem erros', () => {
     render(<LoginForm />);
     expect(screen.getByRole('heading', { name: 'Login' })).toBeInTheDocument();
+  });
+
+  it('exibe o campo CPF / CNPJ', () => {
+    render(<LoginForm />);
+    expect(screen.getByText('CPF / CNPJ *')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('000.000.000-00')).toBeInTheDocument();
   });
 
   it('exibe os campos CPF/CNPJ e Senha', () => {
@@ -41,5 +57,37 @@ describe('LoginForm', () => {
     render(<LoginForm />);
     await userEvent.click(screen.getByRole('button', { name: /entrar/i }));
     expect(await screen.findAllByText('Obrigatório')).toHaveLength(2);
+  });
+
+  it('redireciona para /dashboard após login bem-sucedido', async () => {
+    const user = userEvent.setup();
+    vi.spyOn(global, 'fetch').mockResolvedValue({
+      ok: true,
+    } as Response);
+
+    render(<LoginForm />);
+    await user.type(screen.getByPlaceholderText('000.000.000-00'), '999.999.999-99');
+    await user.type(document.getElementById('userPwd')!, '123456');
+    await user.click(screen.getByRole('button', { name: /entrar/i }));
+
+    await waitFor(() => {
+      expect(pushMock).toHaveBeenCalledWith('/dashboard');
+    });
+  });
+
+  it('exibe mensagem de erro para credenciais inválidas', async () => {
+    const user = userEvent.setup();
+    vi.spyOn(global, 'fetch').mockResolvedValue({
+      ok: false,
+      json: async () => ({ error: 'Credenciais inválidas' }),
+    } as Response);
+
+    render(<LoginForm />);
+    await user.type(screen.getByPlaceholderText('000.000.000-00'), '111.111.111-11');
+    await user.type(document.getElementById('userPwd')!, 'errado');
+    await user.click(screen.getByRole('button', { name: /entrar/i }));
+
+    expect(await screen.findByText('Credenciais inválidas')).toBeInTheDocument();
+    expect(pushMock).not.toHaveBeenCalled();
   });
 });

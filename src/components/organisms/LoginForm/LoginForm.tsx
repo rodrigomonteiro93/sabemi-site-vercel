@@ -21,15 +21,26 @@ export default function LoginForm() {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors, isSubmitting },
   } = useForm<LoginFormValues>({
     resolver: zodResolver(schema),
     defaultValues: { remember: false },
   });
 
-  async function onSubmit() {
-    await new Promise(r => setTimeout(r, 600));
-    router.push('/dashboard');
+  async function onSubmit(data: LoginFormValues) {
+    const res = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId: data.userId, password: data.password }),
+    });
+
+    if (res.ok) {
+      router.push('/dashboard');
+    } else {
+      const body = await res.json();
+      setError('root', { message: body.error ?? 'Credenciais inválidas' });
+    }
   }
 
   return (
@@ -56,6 +67,10 @@ export default function LoginForm() {
             error={errors.password?.message}
           />
         </div>
+
+        {errors.root?.message && (
+          <p className={styles.rootError}>{errors.root.message}</p>
+        )}
 
         <label className={styles.remember}>
           <input type="checkbox" {...register('remember')} />
