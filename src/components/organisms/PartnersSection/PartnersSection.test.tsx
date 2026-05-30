@@ -22,10 +22,11 @@ vi.mock('@/components/molecules/SiteCarousel', () => ({
 }));
 
 import PartnersSection from './PartnersSection';
+import { HOME_PARTNERS_MOCK } from '@/lib/mocks/partners';
 
 describe('PartnersSection', () => {
   it('renderiza título, parceiros e navegação', () => {
-    render(<PartnersSection />);
+    render(<PartnersSection partners={HOME_PARTNERS_MOCK} />);
 
     expect(screen.getByRole('heading', { name: 'Parceiros' })).toBeInTheDocument();
     expect(screen.getAllByRole('img')).toHaveLength(7);

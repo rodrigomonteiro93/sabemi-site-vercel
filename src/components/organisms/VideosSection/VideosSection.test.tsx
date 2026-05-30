@@ -22,10 +22,11 @@ vi.mock('@/components/molecules/SiteCarousel', () => ({
 }));
 
 import VideosSection from './VideosSection';
+import { HOME_VIDEOS_MOCK } from '@/lib/mocks/videos';
 
 describe('VideosSection', () => {
   it('renderiza seção de vídeos com cards e navegação', () => {
-    render(<VideosSection />);
+    render(<VideosSection videos={HOME_VIDEOS_MOCK} />);
 
     expect(screen.getByRole('heading', { name: 'Vídeos de Conteúdo' })).toBeInTheDocument();
     expect(screen.getAllByRole('article')).toHaveLength(7);

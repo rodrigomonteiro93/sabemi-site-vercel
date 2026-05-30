@@ -1,31 +1,12 @@
 import NewsCard from '@/components/molecules/NewsCard';
+import type { NewsItem } from '@/lib/types/news';
 import styles from './NewsSection.module.css';
 
-const NEWS = [
-  {
-    imageUrl: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=800&q=70',
-    category: 'Viagens Internacionais',
-    categoryVariant: 'intl' as const,
-    date: '19/05/2025',
-    title: 'Argentina torna seguro viagem obrigatório: veja como se proteger e evitar problemas na imigração',
-  },
-  {
-    imageUrl: 'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&q=70',
-    category: 'Viagens & Turismo',
-    categoryVariant: 'tur' as const,
-    date: '21/08/2023',
-    title: 'Uma linha do tempo do Turismo',
-  },
-  {
-    imageUrl: 'https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?w=800&q=70',
-    category: 'Viagens & Turismo',
-    categoryVariant: 'tur' as const,
-    date: '15/08/2023',
-    title: 'Recife de Corais ao redor do mundo',
-  },
-];
+interface NewsSectionProps {
+  news: NewsItem[];
+}
 
-export default function NewsSection() {
+export default function NewsSection({ news }: NewsSectionProps) {
   return (
     <section className={styles.news}>
       <div className="container">
@@ -34,8 +15,8 @@ export default function NewsSection() {
           <a href="#">Clique para acessar todas as notícias</a>
         </div>
         <div className={styles.newsGrid}>
-          {NEWS.map((n, i) => (
-            <NewsCard key={i} {...n} />
+          {news.map((n) => (
+            <NewsCard key={n.id} {...n} />
           ))}
         </div>
       </div>

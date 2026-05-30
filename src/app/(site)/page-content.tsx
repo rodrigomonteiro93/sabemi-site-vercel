@@ -7,16 +7,25 @@ import PartnersSection from '@/components/organisms/PartnersSection';
 import SiteFooter      from '@/components/organisms/SiteFooter';
 import WhatsAppFab     from '@/components/atoms/WhatsAppFab';
 import CookieBanner    from '@/components/organisms/CookieBanner';
+import type { VideoItem } from '@/lib/types/videos';
+import type { NewsItem } from '@/lib/types/news';
+import type { PartnerData } from '@/lib/types/partners';
 
-export default function HomeContent() {
+interface HomeContentProps {
+  videos: VideoItem[];
+  news: NewsItem[];
+  partners: PartnerData[];
+}
+
+export default function HomeContent({ videos, news, partners }: HomeContentProps) {
   return (
     <>
       <SiteHeader />
       <HeroSection />
-      <VideosSection />
+      <VideosSection videos={videos} />
       <StepsSection />
-      <NewsSection />
-      <PartnersSection />
+      <NewsSection news={news} />
+      <PartnersSection partners={partners} />
       <SiteFooter />
       <WhatsAppFab />
       <CookieBanner />
