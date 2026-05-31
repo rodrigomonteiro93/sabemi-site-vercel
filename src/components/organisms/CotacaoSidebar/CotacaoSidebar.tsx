@@ -1,5 +1,7 @@
 'use client';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { buildCotacaoQueryString } from '@/lib/cotacao/urlParams';
 import { useCotacaoStore } from '@/lib/stores/cotacaoStore';
 import Switch from '@/components/atoms/Switch/Switch';
 import CalendarPopover from '@/components/molecules/CalendarPopover/CalendarPopover';
@@ -8,6 +10,7 @@ import IdadeRow from '@/components/molecules/IdadeRow/IdadeRow';
 import styles from './CotacaoSidebar.module.css';
 
 export default function CotacaoSidebar() {
+  const router = useRouter();
   const {
     destino, setDestino,
     ida, setIda,
@@ -17,6 +20,7 @@ export default function CotacaoSidebar() {
     markup, setMarkup,
     markupHidden, toggleMarkupHidden,
     ages, addAge, removeAge, setAge,
+    sortBy,
   } = useCotacaoStore();
 
   const [vip, setVip] = useState(false);
@@ -30,6 +34,11 @@ export default function CotacaoSidebar() {
   }
   function formatDate(d: Date): string {
     return `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`;
+  }
+
+  function handleSearch() {
+    const query = buildCotacaoQueryString({ destino, ida, retorno, tipo, ages, coberturas, ordenar: sortBy });
+    router.push(`/cotacao?${query}`);
   }
 
   return (
@@ -166,7 +175,7 @@ export default function CotacaoSidebar() {
           </div>
         </div>
 
-        <button className={styles.btnBusca}>Buscar</button>
+        <button className={styles.btnBusca} type="button" onClick={handleSearch}>Buscar</button>
       </div>
     </aside>
   );

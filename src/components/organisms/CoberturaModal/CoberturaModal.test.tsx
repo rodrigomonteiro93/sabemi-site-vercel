@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { describe, it, expect, beforeEach } from 'vitest';
 import CoberturaModal from './CoberturaModal';
 import { useCotacaoStore } from '@/lib/stores/cotacaoStore';
-import { PLANS } from '@/lib/types/cotacao';
+import { PLANS_MOCK } from '@/lib/mocks/plans';
 
 describe('CoberturaModal', () => {
   beforeEach(() => {
@@ -25,7 +25,7 @@ describe('CoberturaModal', () => {
     render(<CoberturaModal />);
 
     expect(screen.getByRole('dialog')).toBeInTheDocument();
-    expect(screen.getByText(PLANS[0].name.toUpperCase())).toBeInTheDocument();
+    expect(screen.getByText(PLANS_MOCK[0].name.toUpperCase())).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Coberturas do plano' })).toBeInTheDocument();
     expect(screen.getByText('Despesas Médicas Hospitalares em Viagem')).toBeInTheDocument();
   });

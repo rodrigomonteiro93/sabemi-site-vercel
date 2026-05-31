@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import FinanceiroListSection from './FinanceiroListSection';
-import { generateMockFaturas } from '@/lib/types/financeiro';
+import { generateMockFaturas } from '@/lib/mocks/financeiro';
 import type { FinanceiroItem } from '@/lib/types/financeiro';
 
 const mockPush = vi.fn();

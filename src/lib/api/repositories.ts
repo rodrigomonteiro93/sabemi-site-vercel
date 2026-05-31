@@ -1,3 +1,4 @@
+import type { CotacaoPlan, CotacaoParams } from '@/lib/types/cotacao';
 import type { VideoItem } from '@/lib/types/videos';
 import type { LoginRequest, LoginResponse } from '@/lib/types/auth';
 import type { NewsItem } from '@/lib/types/news';
@@ -44,7 +45,12 @@ export interface EmissoresRepository {
   getEmissores(): Promise<EmissorItem[]>;
 }
 
+export interface PlansRepository {
+  getPlanos(params: CotacaoParams): Promise<CotacaoPlan[]>;
+}
+
 export interface ApiProvider {
+  plans: PlansRepository;
   videos: VideosRepository;
   news: NewsRepository;
   partners: PartnersRepository;

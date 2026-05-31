@@ -1,7 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import HeroSection from './HeroSection';
+
+vi.mock('next/navigation', () => ({
+  useRouter: () => ({ push: vi.fn() }),
+}));
 
 describe('HeroSection', () => {
   it('renderiza hero e formulário de cotação', () => {
@@ -9,7 +13,7 @@ describe('HeroSection', () => {
 
     expect(screen.getByRole('heading', { name: /Seguro Viagem Sabemi/i })).toBeInTheDocument();
     expect(screen.getByRole('form', { name: 'Cotação rápida' })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Fazer Cotação' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Fazer Cotação' })).toBeInTheDocument();
   });
 
   it('oculta PaxPanel quando paxCount é 0', () => {

@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi } from 'vitest';
 import PlanCard from './PlanCard';
-import { PLANS } from '@/lib/types/cotacao';
+import { PLANS_MOCK } from '@/lib/mocks/plans';
 
 const defaultProps = {
   index: 0,
@@ -17,7 +17,7 @@ const defaultProps = {
 
 describe('PlanCard', () => {
   it('renderiza plano sem COVID com Extravio de Bagagem', () => {
-    render(<PlanCard {...defaultProps} plan={PLANS[0]} />);
+    render(<PlanCard {...defaultProps} plan={PLANS_MOCK[0]} />);
 
     expect(screen.getByText('Sabemi 15K Brasil')).toBeInTheDocument();
     expect(screen.getByText('Extravio de Bagagem')).toBeInTheDocument();
@@ -25,7 +25,7 @@ describe('PlanCard', () => {
   });
 
   it('renderiza plano com COVID sem Extravio de Bagagem', () => {
-    render(<PlanCard {...defaultProps} plan={PLANS[1]} />);
+    render(<PlanCard {...defaultProps} plan={PLANS_MOCK[1]} />);
 
     expect(screen.getByText('Sabemi 15K Brasil — com COVID')).toBeInTheDocument();
     expect(screen.getByText('Despesas Médicas e Hospitalares por COVID-19')).toBeInTheDocument();
@@ -39,7 +39,7 @@ describe('PlanCard', () => {
     render(
       <PlanCard
         {...defaultProps}
-        plan={PLANS[0]}
+        plan={PLANS_MOCK[0]}
         onToggleCompare={onToggleCompare}
       />,
     );

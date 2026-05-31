@@ -15,7 +15,7 @@ export default function SiteHeader() {
   return (
     <header className={styles.site}>
       <div className={`container ${styles.navRow}`}>
-        <a href="#" className={styles.logo} aria-label="Sabemi">
+        <a href="/" className={styles.logo} aria-label="Sabemi">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/assets/sabemi-seguradora-logo.png" alt="Sabemi Seguradora" />
         </a>

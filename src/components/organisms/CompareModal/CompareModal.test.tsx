@@ -3,7 +3,8 @@ import userEvent from '@testing-library/user-event';
 import { describe, it, expect, beforeEach } from 'vitest';
 import CompareModal from './CompareModal';
 import { useCotacaoStore } from '@/lib/stores/cotacaoStore';
-import { PLANS, buildCoberturas } from '@/lib/types/cotacao';
+import { PLANS_MOCK } from '@/lib/mocks/plans';
+import { buildCoberturas } from '@/lib/types/cotacao';
 
 describe('CompareModal', () => {
   beforeEach(() => {
@@ -28,11 +29,11 @@ describe('CompareModal', () => {
 
     expect(screen.getByRole('dialog')).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Comparativo de planos' })).toBeInTheDocument();
-    expect(screen.getByRole('columnheader', { name: PLANS[0].name })).toBeInTheDocument();
-    expect(screen.getByRole('columnheader', { name: PLANS[1].name })).toBeInTheDocument();
+    expect(screen.getByRole('columnheader', { name: PLANS_MOCK[0].name })).toBeInTheDocument();
+    expect(screen.getByRole('columnheader', { name: PLANS_MOCK[1].name })).toBeInTheDocument();
 
-    const labels0 = buildCoberturas(PLANS[0]).map(([k]) => k);
-    const labels1 = buildCoberturas(PLANS[1]).map(([k]) => k);
+    const labels0 = buildCoberturas(PLANS_MOCK[0]).map(([k]) => k);
+    const labels1 = buildCoberturas(PLANS_MOCK[1]).map(([k]) => k);
     const sharedLabel = labels0.find((l) => labels1.includes(l));
 
     expect(sharedLabel).toBeDefined();

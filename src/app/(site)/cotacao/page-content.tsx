@@ -1,4 +1,7 @@
 'use client';
+import { useEffect } from 'react';
+import { useCotacaoStore } from '@/lib/stores/cotacaoStore';
+import type { CotacaoPlan, CotacaoParams } from '@/lib/types/cotacao';
 import SiteHeader from '@/components/organisms/SiteHeader/SiteHeader';
 import SiteFooter from '@/components/organisms/SiteFooter/SiteFooter';
 import WhatsAppFab from '@/components/atoms/WhatsAppFab/WhatsAppFab';
@@ -11,7 +14,18 @@ import EmailModal from '@/components/organisms/EmailModal/EmailModal';
 import CompareModal from '@/components/organisms/CompareModal/CompareModal';
 import styles from './page-content.module.css';
 
-export default function CotacaoContent() {
+interface CotacaoContentProps {
+  initialParams: CotacaoParams;
+  initialPlans: CotacaoPlan[];
+}
+
+export default function CotacaoContent({ initialParams, initialPlans }: CotacaoContentProps) {
+  const initFromParams = useCotacaoStore(s => s.initFromParams);
+
+  useEffect(() => {
+    initFromParams(initialParams, initialPlans);
+  }, [initialParams, initialPlans, initFromParams]);
+
   return (
     <>
       <SiteHeader />

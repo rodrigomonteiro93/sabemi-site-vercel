@@ -1,3 +1,4 @@
+import { COTACAO_SORT_OPTIONS } from '@/lib/cotacao/sortPlans';
 import styles from './ResultMeta.module.css';
 
 interface ResultMetaProps {
@@ -20,10 +21,9 @@ export default function ResultMeta({ destination, dateFrom, dateTo, days, pax, s
       <label className={styles.sort}>
         Ordenar por
         <select value={sortBy} onChange={(e) => onSortChange(e.target.value)}>
-          <option>Menor preço</option>
-          <option>Maior cobertura médica</option>
-          <option>Mais vendidos</option>
-          <option>Por seguradora</option>
+          {COTACAO_SORT_OPTIONS.map((option) => (
+            <option key={option} value={option}>{option}</option>
+          ))}
         </select>
       </label>
     </div>

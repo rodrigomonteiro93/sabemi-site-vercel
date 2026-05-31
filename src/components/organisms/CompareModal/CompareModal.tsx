@@ -1,7 +1,7 @@
 'use client';
 import { useEffect } from 'react';
 import { useCotacaoStore } from '@/lib/stores/cotacaoStore';
-import { PLANS, buildCoberturas } from '@/lib/types/cotacao';
+import { buildCoberturas } from '@/lib/types/cotacao';
 import styles from './CompareModal.module.css';
 
 const SABEMI_BADGE = (
@@ -12,7 +12,7 @@ const SABEMI_BADGE = (
 );
 
 export default function CompareModal() {
-  const { compareModalOpen, closeCompareModal, compared, ages } = useCotacaoStore();
+  const { compareModalOpen, closeCompareModal, compared, ages, plans } = useCotacaoStore();
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) { if (e.key === 'Escape') closeCompareModal(); }
@@ -27,12 +27,13 @@ export default function CompareModal() {
 
   if (!compareModalOpen || compared.length < 2) return null;
 
-  const plans = compared.map((i) => PLANS[i]);
-  const allRows = plans.map((p) => buildCoberturas(p));
+  const selectedPlans = compared.map((i) => plans[i]).filter(Boolean);
+  if (selectedPlans.length < 2) return null;
+  const allRows = selectedPlans.map((p) => buildCoberturas(p));
   const labelSet = new Set<string>();
   allRows.forEach((rows) => rows.forEach(([k]) => labelSet.add(k)));
   const labels = Array.from(labelSet);
-  const cols = `repeat(${plans.length}, 1fr)`;
+  const cols = `repeat(${selectedPlans.length}, 1fr)`;
 
   return (
     <div
@@ -50,7 +51,7 @@ export default function CompareModal() {
         </header>
         <div className={styles.modalBody}>
           <div className={styles.compareSummary} style={{ gridTemplateColumns: cols }}>
-            {plans.map((p) => (
+            {selectedPlans.map((p) => (
               <div key={p.name} className={styles.csumCard}>
                 <div className={styles.csumLogo}>{SABEMI_BADGE}</div>
                 <div className={styles.csumName}>{p.name}</div>
@@ -66,7 +67,7 @@ export default function CompareModal() {
             ))}
           </div>
           <div className={styles.comparePax} style={{ gridTemplateColumns: cols }}>
-            {plans.map((p) => (
+            {selectedPlans.map((p) => (
               <div key={p.name} className={styles.cpaxCard}>
                 <div className={styles.cpaxTtl}>Preços por passageiro</div>
                 {ages.map((age, i) => (
@@ -84,14 +85,14 @@ export default function CompareModal() {
               <thead>
                 <tr>
                   <th>Cobertura</th>
-                  {plans.map((p) => <th key={p.name}>{p.name}</th>)}
+                  {selectedPlans.map((p) => <th key={p.name}>{p.name}</th>)}
                 </tr>
               </thead>
               <tbody>
                 {labels.map((label) => (
                   <tr key={label}>
                     <td>{label}</td>
-                    {plans.map((p, i) => {
+                    {selectedPlans.map((p, i) => {
                       const found = allRows[i].find(([k]) => k === label);
                       if (!found) return <td key={p.name} className={styles.nao}>Não</td>;
                       const val = found[1];

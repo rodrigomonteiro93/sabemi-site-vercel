@@ -1,7 +1,7 @@
 'use client';
 import { useEffect } from 'react';
 import { useCotacaoStore } from '@/lib/stores/cotacaoStore';
-import { PLANS, buildCoberturas } from '@/lib/types/cotacao';
+import { buildCoberturas } from '@/lib/types/cotacao';
 import styles from './CoberturaModal.module.css';
 
 const SABEMI_BADGE_LG = (
@@ -12,7 +12,7 @@ const SABEMI_BADGE_LG = (
 );
 
 export default function CoberturaModal() {
-  const { covModalOpen, covModalPlanIdx, closeCovModal } = useCotacaoStore();
+  const { covModalOpen, covModalPlanIdx, closeCovModal, plans } = useCotacaoStore();
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) { if (e.key === 'Escape') closeCovModal(); }
@@ -26,7 +26,8 @@ export default function CoberturaModal() {
   }, [covModalOpen, closeCovModal]);
 
   if (!covModalOpen || covModalPlanIdx === null) return null;
-  const plan = PLANS[covModalPlanIdx];
+  const plan = plans[covModalPlanIdx];
+  if (!plan) return null;
   const rows = buildCoberturas(plan);
 
   return (

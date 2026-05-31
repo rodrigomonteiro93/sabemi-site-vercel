@@ -8,8 +8,10 @@ import { mockComissoesRepository } from '@/lib/api/mock/comissoes';
 import { mockFinanceiroRepository } from '@/lib/api/mock/financeiro';
 import { mockVouchersRepository } from '@/lib/api/mock/vouchers';
 import { mockEmissoresRepository } from '@/lib/api/mock/emissores';
+import { mockPlansRepository } from '@/lib/api/mock/plans';
 
 export const mockProvider: ApiProvider = {
+  plans: mockPlansRepository,
   videos: mockVideosRepository,
   news: mockNewsRepository,
   partners: mockPartnersRepository,

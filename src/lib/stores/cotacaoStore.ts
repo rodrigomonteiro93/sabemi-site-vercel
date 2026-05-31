@@ -1,5 +1,8 @@
 import { create } from 'zustand';
-import { CotacaoPlan, PLANS } from '@/lib/types/cotacao';
+import { sortPlans } from '@/lib/cotacao/sortPlans';
+import { getDestinoLabel, getTipoLabel } from '@/lib/data/destinos';
+import { PLANS_MOCK } from '@/lib/mocks/plans';
+import type { CotacaoPlan, CotacaoParams } from '@/lib/types/cotacao';
 
 interface CotacaoStore {
   destino: string;
@@ -37,6 +40,8 @@ interface CotacaoStore {
   clearCompare: () => void;
   openCompareModal: () => void;
   closeCompareModal: () => void;
+  setPlans: (plans: CotacaoPlan[]) => void;
+  initFromParams: (params: CotacaoParams, plans: CotacaoPlan[]) => void;
 }
 
 const MAX_COMPARE = 3;
@@ -52,7 +57,7 @@ export const useCotacaoStore = create<CotacaoStore>((set) => ({
   markupHidden: false,
   ages: [33],
   sortBy: 'Menor preço',
-  plans: PLANS,
+  plans: PLANS_MOCK,
   covModalOpen: false,
   covModalPlanIdx: null,
   emailModalOpen: false,
@@ -98,4 +103,18 @@ export const useCotacaoStore = create<CotacaoStore>((set) => ({
   clearCompare: () => set({ compared: [] }),
   openCompareModal: () => set({ compareModalOpen: true }),
   closeCompareModal: () => set({ compareModalOpen: false }),
+
+  setPlans: (plans) => set({ plans }),
+
+  initFromParams: (params, plans) => set({
+    destino:  getDestinoLabel(params.destino),
+    ida:      params.ida.split('-').join('/'),
+    retorno:  params.retorno.split('-').join('/'),
+    tipo:     getTipoLabel(params.tipo),
+    ages:     params.ages,
+    coberturas: params.coberturas,
+    sortBy:   params.ordenar,
+    plans:    sortPlans(plans, params.ordenar),
+    compared: [],
+  }),
 }));

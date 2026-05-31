@@ -1,5 +1,7 @@
 'use client';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { DEST_GROUPS, TIPO_OPTIONS } from '@/lib/data/destinos';
 import QuoteFieldSelect from '@/components/molecules/QuoteFieldSelect';
 import QuoteFieldDate   from '@/components/molecules/QuoteFieldDate';
 import QuoteFieldPax    from '@/components/molecules/QuoteFieldPax';
@@ -19,48 +21,35 @@ function formatDate(d: Date) {
   };
 }
 
-const DEST_GROUPS = [
-  { label: 'Brasil', options: [{ value: 'BR', label: 'Brasil (Nacional)' }] },
-  { label: 'América do Sul', options: [
-    { value: 'AR', label: 'Argentina' },
-    { value: 'CL', label: 'Chile' },
-    { value: 'CO', label: 'Colômbia' },
-    { value: 'PE', label: 'Peru' },
-    { value: 'UY', label: 'Uruguai' },
-  ]},
-  { label: 'América do Norte e Central', options: [
-    { value: 'US', label: 'Estados Unidos' },
-    { value: 'CA', label: 'Canadá' },
-    { value: 'MX', label: 'México' },
-  ]},
-  { label: 'Europa', options: [
-    { value: 'EU', label: 'Europa (Schengen)' },
-    { value: 'PT', label: 'Portugal' },
-    { value: 'ES', label: 'Espanha' },
-    { value: 'FR', label: 'França' },
-    { value: 'IT', label: 'Itália' },
-    { value: 'UK', label: 'Reino Unido' },
-  ]},
-  { label: 'Outros', options: [
-    { value: 'AS', label: 'Ásia' },
-    { value: 'AF', label: 'África' },
-    { value: 'OC', label: 'Oceania' },
-    { value: 'MULTI', label: 'Múltiplos destinos' },
-  ]},
-];
+function computeAges(
+  count: number,
+  useBirthdate: boolean,
+  values: Record<string, string>,
+): number[] {
+  if (count === 0) return [30];
+  const today = new Date();
+  return Array.from({ length: count }, (_, i) => {
+    const key = (useBirthdate ? 'dob-' : 'age-') + (i + 1);
+    const val = values[key];
+    if (!val) return 30;
+    if (useBirthdate) {
+      const dob = new Date(val);
+      let age = today.getFullYear() - dob.getFullYear();
+      const m = today.getMonth() - dob.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) age--;
+      return Math.max(0, age);
+    }
+    return parseInt(val, 10) || 30;
+  });
+}
 
-const TIPO_OPTIONS = [
-  { value: 'lazer', label: 'Lazer / Turismo / Negócios' },
-  { value: 'lazer-puro', label: 'Lazer / Turismo' },
-  { value: 'negocios', label: 'Negócios' },
-  { value: 'estudo', label: 'Estudo / Intercâmbio' },
-  { value: 'trabalho', label: 'Trabalho temporário' },
-  { value: 'mochilao', label: 'Mochilão' },
-  { value: 'esportes', label: 'Esportes / Aventura' },
-  { value: 'cruzeiro', label: 'Cruzeiro' },
-];
+function formatUrlDate(d: Date): string {
+  const pad = (n: number) => String(n).padStart(2, '0');
+  return `${pad(d.getDate())}-${pad(d.getMonth() + 1)}-${d.getFullYear()}`;
+}
 
 export default function HeroSection() {
+  const router = useRouter();
   const [destination, setDestination]   = useState('');
   const [tripType, setTripType]         = useState('lazer');
   const [startDate, setStartDate]       = useState(new Date(2026, 4, 26));
@@ -78,6 +67,19 @@ export default function HeroSection() {
     setStartDate(start);
     setEndDate(end);
     setCalOpen(false);
+  }
+
+  function handleSubmit() {
+    if (!destination) return;
+    const ages = computeAges(paxCount, useBirthdate, paxValues);
+    const params = new URLSearchParams({
+      destino: destination,
+      ida:     formatUrlDate(startDate),
+      retorno: formatUrlDate(endDate),
+      tipo:    tripType,
+      ages:    ages.join(','),
+    });
+    router.push(`/cotacao?${params.toString()}`);
   }
 
   const startFmt = formatDate(startDate);
@@ -157,7 +159,7 @@ export default function HeroSection() {
         )}
 
         <div className={styles.heroCta}>
-          <Button variant="primary" href="Cotacao Sabemi.html">Fazer Cotação</Button>
+          <Button variant="primary" onClick={handleSubmit}>Fazer Cotação</Button>
         </div>
       </div>
     </section>
