@@ -20,7 +20,7 @@ export interface VoucherItem {
   pedido: string;
   planos: number;
   status: 'cancel' | 'emit' | 'pendente';
-  urlPag?: boolean;
+  urlPag?: string;
 }
 
 export interface KpiItemData {
