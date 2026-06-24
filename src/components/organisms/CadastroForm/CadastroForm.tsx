@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useRouter } from 'next/navigation';
+import { registerCadastro } from '@/lib/api/cadastro-client';
+import { ROUTES } from '@/lib/navigation/siteRoutes';
 import FormField, { SelectOption } from '@/components/molecules/FormField';
 import Button from '@/components/atoms/Button';
 import styles from './CadastroForm.module.css';
@@ -79,9 +81,10 @@ export default function CadastroForm() {
   const tipoCadastroValue = watch('tipoCadastro') as 'corretora' | 'agencia';
   const registroLabel = tipoCadastroValue === 'corretora' ? 'SUSEP *' : 'CADASTUR *';
 
-  async function onSubmit() {
-    await new Promise((r) => setTimeout(r, 800));
-    router.push('/login');
+  async function onSubmit(data: FormValues) {
+    const { confirmarSenha: _, ...payload } = data;
+    await registerCadastro(payload);
+    router.push(ROUTES.login);
   }
 
   return (

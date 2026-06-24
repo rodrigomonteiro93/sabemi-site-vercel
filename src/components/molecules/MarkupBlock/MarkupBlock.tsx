@@ -82,9 +82,9 @@ export default function MarkupBlock({ value, hidden, onChange, onToggleHidden }:
             </div>
           )}
           <div className={styles.markupHint}>
-            <a href="#" onClick={toggleMode}>
+            <button type="button" className={styles.toggleLink} onClick={toggleMode}>
               {inputMode ? 'Clique aqui para deslizar' : 'Clique aqui para digitar'}
-            </a>
+            </button>
           </div>
         </>
       )}

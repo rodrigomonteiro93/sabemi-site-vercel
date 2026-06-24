@@ -41,3 +41,9 @@
   font-weight: 800;
   font-size: 16px;
 }
+
+.vDiscount {
+  color: var(--success);
+  font-weight: 800;
+  font-size: 16px;
+}

@@ -1,3 +1,4 @@
+import { ROUTES } from '@/lib/navigation/siteRoutes';
 import styles from './TermsCheckbox.module.css';
 
 interface TermsCheckboxProps {
@@ -14,7 +15,7 @@ export default function TermsCheckbox({ checked, onChange }: TermsCheckboxProps)
         onChange={(e) => onChange(e.target.checked)}
       />
       Li e aceito os{' '}
-      <a href="#">termos de uso</a>
+      <a href={ROUTES.termosDeUso} target="_blank" rel="noopener noreferrer">termos de uso</a>
       , condições gerais do seguro e cobertura do produto.
     </label>
   );

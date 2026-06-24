@@ -24,3 +24,12 @@
   background: var(--sabemi-blue);
   border-radius: 2px;
 }
+
+@media (max-width: 768px) {
+  .navLinks { gap: 18px; }
+  .link { font-size: 13px; }
+}
+
+@media (max-width: 600px) {
+  .navLinks { display: none; }
+}

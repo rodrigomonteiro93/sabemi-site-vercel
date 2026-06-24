@@ -1,13 +1,10 @@
-import type { Metadata } from 'next';
+﻿import { createPageMetadata } from '@/lib/metadata/createPageMetadata';
 import { getPlanos } from '@/lib/api/plans';
 import { DEFAULT_COTACAO_SORT, parseCotacaoSort } from '@/lib/cotacao/sortPlans';
 import type { CotacaoParams } from '@/lib/types/cotacao';
 import CotacaoContent from './page-content';
 
-export const metadata: Metadata = {
-  title: 'Cotação de Seguro Viagem — Sabemi',
-  description: 'Compare planos de seguro viagem e encontre a melhor cobertura para o seu destino.',
-};
+export const generateMetadata = createPageMetadata('cotacao');
 
 function parseSearchParams(sp: Record<string, string | string[] | undefined>): CotacaoParams {
   const get = (k: string, fallback: string): string =>
@@ -34,3 +31,4 @@ export default async function CotacaoPage({
   const plans  = await getPlanos(params);
   return <CotacaoContent initialParams={params} initialPlans={plans} />;
 }
+

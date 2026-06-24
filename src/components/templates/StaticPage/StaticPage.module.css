@@ -1,0 +1,20 @@
+.page {
+  padding: 48px 0 72px;
+  min-height: 50vh;
+}
+
+.article {
+  max-width: 760px;
+}
+
+.article h1 {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  margin-bottom: 24px;
+  color: var(--sabemi-navy, #0b2d4a);
+}
+
+.article p {
+  margin-bottom: 16px;
+  line-height: 1.7;
+  color: #334155;
+}

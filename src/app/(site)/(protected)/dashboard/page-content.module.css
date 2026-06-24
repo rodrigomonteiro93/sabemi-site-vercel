@@ -42,3 +42,15 @@
   .dashGrid { grid-template-columns: 1fr; }
   .heroRow { grid-template-columns: 1fr; }
 }
+
+@media (max-width: 768px) {
+  .page { padding: 20px 0 40px; }
+  .container { padding: 0 16px; }
+  .dashGrid { gap: 20px; }
+  .content { gap: 20px; }
+}
+
+@media (max-width: 480px) {
+  .page { padding: 16px 0 32px; }
+  .sectionTtl { font-size: 11px; margin-bottom: 12px; }
+}

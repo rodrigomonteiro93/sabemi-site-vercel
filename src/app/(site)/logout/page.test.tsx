@@ -4,6 +4,10 @@ vi.mock('next/navigation', () => ({
   redirect: vi.fn(),
 }));
 
+vi.mock('@/lib/metadata/createPageMetadata', () => ({
+  createPageMetadata: () => async () => ({}),
+}));
+
 import { redirect } from 'next/navigation';
 import LogoutPage from './page';
 

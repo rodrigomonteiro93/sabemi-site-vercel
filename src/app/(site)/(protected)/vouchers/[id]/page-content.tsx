@@ -11,6 +11,7 @@ import ComKpiCard from '@/components/molecules/ComKpiCard/ComKpiCard';
 import PedidoCard from '@/components/organisms/PedidoCard/PedidoCard';
 import PaxDetalheCard from '@/components/organisms/PaxDetalheCard/PaxDetalheCard';
 import CancelModal from '@/components/organisms/CancelModal/CancelModal';
+import { ROUTES } from '@/lib/navigation/siteRoutes';
 import styles from './page-content.module.css';
 
 const icoUser = (
@@ -200,7 +201,7 @@ export default function VoucherDetalheContent() {
                 avatarColorIndex={1}
                 statusLabel="CANCELADO"
                 statusVariant="cancel"
-                conditionsHref="#"
+                conditionsHref={ROUTES.coberturas}
                 comissaoValue="R$ 65,39"
                 comissaoPct="30,00%"
                 netValue="R$ 152,57"
@@ -229,7 +230,7 @@ export default function VoucherDetalheContent() {
                 avatarColorIndex={2}
                 statusLabel="EMITIDO"
                 statusVariant="emit"
-                conditionsHref="#"
+                conditionsHref={ROUTES.coberturas}
                 comissaoValue="R$ 59,09"
                 comissaoPct="30,00%"
                 netValue="R$ 137,89"

@@ -35,3 +35,14 @@
     gap: 28px;
   }
 }
+
+@media (max-width: 768px) {
+  .page { padding: 28px 0 56px; }
+  .container { padding: 0 16px; }
+  .pageTitle { font-size: 20px; margin-bottom: 24px; }
+}
+
+@media (max-width: 480px) {
+  .page { padding: 20px 0 40px; }
+  .pageTitle { font-size: 18px; }
+}

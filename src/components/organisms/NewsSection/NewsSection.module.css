@@ -14,4 +14,16 @@
 }
 @media (max-width: 980px) {
   .newsGrid { grid-template-columns: 1fr; }
+  .newsHead h2 { font-size: 22px; }
+}
+
+@media (max-width: 600px) {
+  .news { padding: 56px 0 64px; }
+  .newsHead { margin-bottom: 24px; }
+  .newsHead h2 { font-size: 20px; }
+  .newsGrid { gap: 20px; }
+}
+
+@media (max-width: 400px) {
+  .news { padding: 40px 0 48px; }
 }

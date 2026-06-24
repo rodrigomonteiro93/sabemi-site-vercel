@@ -25,8 +25,18 @@ export default function CotacaoSidebar() {
 
   const [vip, setVip] = useState(false);
   const [calOpen, setCalOpen] = useState(false);
+  const [linkCopied, setLinkCopied] = useState(false);
 
   const pax = ages.length;
+
+  function handleCopyLink() {
+    const query = buildCotacaoQueryString({ destino, ida, retorno, tipo, ages, coberturas, ordenar: sortBy });
+    const url = `${window.location.origin}/cotacao?${query}`;
+    void navigator.clipboard.writeText(url).then(() => {
+      setLinkCopied(true);
+      setTimeout(() => setLinkCopied(false), 2000);
+    });
+  }
 
   function parseDate(str: string): Date {
     const [d, m, y] = str.split('/').map(Number);
@@ -44,7 +54,9 @@ export default function CotacaoSidebar() {
   return (
     <aside className={styles.side}>
       <div className={styles.sideTop}>
-        <button className={styles.btnLink} type="button">Copiar link</button>
+        <button className={styles.btnLink} type="button" onClick={handleCopyLink}>
+          {linkCopied ? 'Link copiado!' : 'Copiar link'}
+        </button>
         <span className={styles.vipToggle}>
           Sala VIP
           <Switch checked={vip} onChange={() => setVip(!vip)} />

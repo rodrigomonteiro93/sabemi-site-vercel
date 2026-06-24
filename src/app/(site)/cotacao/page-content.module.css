@@ -8,3 +8,12 @@
 @media (max-width: 1100px) {
   .cotGrid { grid-template-columns: 1fr; }
 }
+
+@media (max-width: 768px) {
+  .page { padding: 28px 0 56px; }
+  .cotGrid { gap: 20px; }
+}
+
+@media (max-width: 480px) {
+  .page { padding: 20px 0 40px; }
+}

@@ -1,4 +1,5 @@
 'use client';
+import { ROUTES } from '@/lib/navigation/siteRoutes';
 import { useEffect } from 'react';
 import { useCotacaoStore } from '@/lib/stores/cotacaoStore';
 import { buildCoberturas } from '@/lib/types/cotacao';
@@ -48,7 +49,7 @@ export default function CoberturaModal() {
         <div className={styles.modalBrandRow}>
           <span className={styles.brandLogo}>{SABEMI_BADGE_LG}</span>
           <span className={styles.seg}>Seguradora: <b>Sabemi Seguradora</b></span>
-          <a href="#" className={styles.pdf} download>
+          <a href={ROUTES.termosDeUso} className={styles.pdf} target="_blank" rel="noopener noreferrer">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM7 14h2v1.5H7V17h2v1.5H7V20H5.5v-7H7v1zm5 6h-2v-7h2c1.1 0 2 .9 2 2v3c0 1.1-.9 2-2 2zm6-5h-2v1.5h2V18h-2v2h-1.5v-7H18v2zm-6 .5v3h-.5v-3h.5z"/>
             </svg>
@@ -74,7 +75,7 @@ export default function CoberturaModal() {
           </table>
         </div>
         <div className={styles.modalFoot}>
-          <a href="#">Condições Gerais</a>
+          <a href={ROUTES.termosDeUso} target="_blank" rel="noopener noreferrer">Condições Gerais</a>
         </div>
       </div>
     </div>

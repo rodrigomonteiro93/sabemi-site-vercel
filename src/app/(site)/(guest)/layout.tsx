@@ -1,5 +1,6 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+import { AUTH_COOKIE_NAME, hasAuthToken } from '@/lib/auth/session';
 
 export default async function GuestLayout({
   children,
@@ -7,9 +8,9 @@ export default async function GuestLayout({
   children: React.ReactNode;
 }) {
   const cookieStore = await cookies();
-  const token = cookieStore.get('auth-token');
+  const token = cookieStore.get(AUTH_COOKIE_NAME);
 
-  if (token) {
+  if (hasAuthToken(token?.value)) {
     redirect('/dashboard');
   }
 

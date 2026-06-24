@@ -1,3 +1,17 @@
+.cupomMsg {
+  margin: -8px 0 16px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.cupomMsgSuccess {
+  color: var(--success);
+}
+
+.cupomMsgError {
+  color: var(--danger);
+}
+
 .finalizarWrap {
   display: flex;
   flex-direction: column;
@@ -30,4 +44,9 @@
   cursor: not-allowed;
   background: var(--sabemi-gray);
   box-shadow: none;
+}
+
+@media (max-width: 600px) {
+  .btnFinalizar { width: 100%; padding: 16px 32px; }
+  .finalizarWrap { gap: 16px; }
 }

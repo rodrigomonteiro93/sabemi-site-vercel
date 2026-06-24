@@ -1,13 +1,11 @@
-import type { Metadata } from 'next';
+﻿import { createPageMetadata } from '@/lib/metadata/createPageMetadata';
 import FinanceiroContent from './page-content';
 import { getFinanceiro } from '@/lib/api/financeiro';
 
-export const metadata: Metadata = {
-  title: 'Financeiro | Sabemi',
-  description: 'Gerencie suas faturas e pagamentos na área logada Sabemi.',
-};
+export const generateMetadata = createPageMetadata('financeiro');
 
 export default async function FinanceiroPage() {
   const items = await getFinanceiro();
   return <FinanceiroContent items={items} />;
 }
+

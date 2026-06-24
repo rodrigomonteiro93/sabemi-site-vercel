@@ -17,6 +17,6 @@ describe('NewsCard', () => {
     expect(screen.getByRole('heading', { name: /Argentina torna seguro/i })).toBeInTheDocument();
     expect(screen.getByText('19/05/2025')).toBeInTheDocument();
     expect(screen.getByText('Viagens Internacionais')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /IR PARA O TEXTO/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /IR PARA O TEXTO/i })).toBeInTheDocument();
   });
 });

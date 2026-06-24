@@ -1,10 +1,7 @@
-import type { Metadata } from 'next';
+﻿import { createPageMetadata } from '@/lib/metadata/createPageMetadata';
 import EmissorCadastrarContent from './page-content';
 
-export const metadata: Metadata = {
-  title: 'Cadastrar Emissor | Sabemi',
-  description: 'Cadastre um novo emissor para sua agência parceira Sabemi.',
-};
+export const generateMetadata = createPageMetadata('emissores-cadastrar');
 
 export default function EmissorCadastrarPage() {
   return <EmissorCadastrarContent />;

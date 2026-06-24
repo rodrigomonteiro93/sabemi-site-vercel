@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { emissorSchema, type EmissorFormData } from '@/lib/types/emissor';
+import { emissorSchema, emissorEditSchema, type EmissorFormData } from '@/lib/types/emissor';
 import FormField from '@/components/molecules/FormField';
 import styles from './EmissorCadastroForm.module.css';
 
@@ -13,10 +13,21 @@ const PERFIL_OPTIONS = [
   { value: 'financeiro', label: 'Financeiro' },
 ];
 
-export default function EmissorCadastroForm() {
+interface EmissorCadastroFormProps {
+  mode?: 'create' | 'edit';
+  emissorId?: number;
+  defaultValues?: Partial<EmissorFormData>;
+}
+
+export default function EmissorCadastroForm({
+  mode = 'create',
+  emissorId,
+  defaultValues,
+}: EmissorCadastroFormProps) {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const isEdit = mode === 'edit';
 
   const {
     register,
@@ -24,7 +35,8 @@ export default function EmissorCadastroForm() {
     handleSubmit,
     formState: { errors },
   } = useForm<EmissorFormData>({
-    resolver: zodResolver(emissorSchema),
+    resolver: zodResolver(isEdit ? emissorEditSchema : emissorSchema),
+    defaultValues,
   });
 
   async function onSubmit() {
@@ -34,6 +46,10 @@ export default function EmissorCadastroForm() {
     setIsSuccess(true);
     setTimeout(() => router.push('/emissores'), 800);
   }
+
+  const submitLabel = isEdit
+    ? (isSubmitting ? 'Salvando...' : isSuccess ? 'Salvo ✓' : 'Salvar alterações')
+    : (isSubmitting ? 'Cadastrando...' : isSuccess ? 'Cadastrado ✓' : 'Cadastrar');
 
   return (
     <div className={styles.formCard}>
@@ -47,8 +63,12 @@ export default function EmissorCadastroForm() {
           </svg>
         </span>
         <div className={styles.ttl}>
-          Dados do emissor
-          <small>O emissor receberá os dados de acesso por e-mail após o cadastro.</small>
+          {isEdit ? `Editar emissor #${emissorId}` : 'Dados do emissor'}
+          <small>
+            {isEdit
+              ? 'Atualize os dados do emissor. A senha só precisa ser preenchida se desejar alterá-la.'
+              : 'O emissor receberá os dados de acesso por e-mail após o cadastro.'}
+          </small>
         </div>
       </div>
 
@@ -98,7 +118,7 @@ export default function EmissorCadastroForm() {
           <div className={`${styles.formRow} ${styles.r2}`}>
             <div>
               <FormField
-                label="Senha *"
+                label={isEdit ? 'Nova senha' : 'Senha *'}
                 name="senha"
                 register={register}
                 type="password"
@@ -106,11 +126,13 @@ export default function EmissorCadastroForm() {
                 error={errors.senha?.message}
               />
               {!errors.senha && (
-                <span className={styles.helper}>Mínimo de 8 caracteres com letras e números.</span>
+                <span className={styles.helper}>
+                  {isEdit ? 'Opcional — preencha apenas para alterar.' : 'Mínimo de 8 caracteres com letras e números.'}
+                </span>
               )}
             </div>
             <FormField
-              label="Confirmar Senha *"
+              label={isEdit ? 'Confirmar nova senha' : 'Confirmar Senha *'}
               name="confirmarSenha"
               register={register}
               type="password"
@@ -155,7 +177,7 @@ export default function EmissorCadastroForm() {
               className={`${styles.btnCadastrar}${isSuccess ? ` ${styles.success}` : ''}`}
               disabled={isSubmitting || isSuccess}
             >
-              {isSubmitting ? 'Cadastrando...' : isSuccess ? 'Cadastrado ✓' : 'Cadastrar'}
+              {submitLabel}
             </button>
           </div>
 

@@ -2,6 +2,7 @@
 import { useRouter } from 'next/navigation';
 import { buildCotacaoQueryString } from '@/lib/cotacao/urlParams';
 import { useCotacaoStore } from '@/lib/stores/cotacaoStore';
+import type { CotacaoPlan } from '@/lib/types/cotacao';
 import ResultMeta from '@/components/molecules/ResultMeta/ResultMeta';
 import PlanCard from '@/components/organisms/PlanCard/PlanCard';
 import styles from './CotacaoResultSection.module.css';
@@ -14,7 +15,7 @@ export default function CotacaoResultSection() {
   const {
     plans, destino, ida, retorno, tipo, coberturas, ages,
     sortBy, compared, markupHidden,
-    toggleCompare, openEmailModal, openCovModal,
+    toggleCompare, openEmailModal, openCovModal, selectPlan,
   } = useCotacaoStore();
 
   function handleSortChange(value: string) {
@@ -22,6 +23,11 @@ export default function CotacaoResultSection() {
       destino, ida, retorno, tipo, ages, coberturas, ordenar: value,
     });
     router.push(`/cotacao?${query}`);
+  }
+
+  function handleContratar(plan: CotacaoPlan) {
+    selectPlan(plan);
+    router.push('/carrinho');
   }
 
   return (
@@ -48,6 +54,7 @@ export default function CotacaoResultSection() {
             onToggleCompare={toggleCompare}
             onOpenEmail={openEmailModal}
             onOpenCobertura={openCovModal}
+            onContratar={handleContratar}
           />
         ))}
       </div>

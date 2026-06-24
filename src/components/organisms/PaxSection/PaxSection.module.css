@@ -31,6 +31,10 @@
   user-select: none;
 }
 
+.paxCardHeadNoRemove {
+  grid-template-columns: 1fr auto;
+}
+
 .paxCardHead:hover {
   background: var(--sabemi-blue-900);
 }
@@ -194,4 +198,16 @@
   .emergencia {
     grid-template-columns: 1fr;
   }
+}
+
+@media (max-width: 600px) {
+  .h2 { font-size: 17px; }
+  .paxSection { margin-bottom: 36px; }
+  .formActions { flex-direction: column; }
+  .paxFormSection { margin-top: 12px; }
+}
+
+@media (max-width: 480px) {
+  .sectionTtl { font-size: 13px; }
+  .sectionDivider { margin: 20px 0; }
 }

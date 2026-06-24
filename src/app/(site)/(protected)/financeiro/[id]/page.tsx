@@ -1,16 +1,15 @@
 import type { Metadata } from 'next';
+import { getPageMetadata } from '@/lib/api/pages-metadata';
 import FaturaDetalheContent from './page-content';
 import type { FaturaDetalheData } from '@/lib/types/financeiro';
 
 interface PageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
-  return {
-    title: `Fatura #${params.id} — Sabemi`,
-    description: `Detalhe da fatura #${params.id} da área do parceiro Sabemi.`,
-  };
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { id } = await params;
+  return getPageMetadata('financeiro-detalhe', { id: `#${id}` });
 }
 
 // Dados estáticos — Fase 2
@@ -137,6 +136,7 @@ const MOCK_FATURA: FaturaDetalheData = {
   totalItems: 2,
 };
 
-export default function Page({ params }: PageProps) {
-  return <FaturaDetalheContent fatura={{ ...MOCK_FATURA, id: params.id }} />;
+export default async function Page({ params }: PageProps) {
+  const { id } = await params;
+  return <FaturaDetalheContent fatura={{ ...MOCK_FATURA, id }} />;
 }

@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  text-decoration: none;
 }
 .iconBtn:hover { background: #eaf3fb; }
 .dot {

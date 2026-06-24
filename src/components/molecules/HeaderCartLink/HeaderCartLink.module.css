@@ -1,0 +1,131 @@
+.cartWrap {
+  position: relative;
+}
+
+.popover {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 300px;
+  padding-top: 14px;
+  z-index: var(--z-dropdown);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--dur-base) var(--ease-out), visibility var(--dur-base);
+}
+
+/* Ponte invisível entre o ícone e o painel — evita fechar ao mover o mouse */
+.popover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -20px;
+  right: -20px;
+  height: 14px;
+}
+
+.popover::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-left: 1px solid #eef2f6;
+  border-top: 1px solid #eef2f6;
+  transform: rotate(45deg);
+}
+
+.cartWrap:hover .popover,
+.cartWrap:focus-within .popover {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.panel {
+  background: #fff;
+  border: 1px solid #eef2f6;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 16px 40px rgba(0, 64, 119, 0.14);
+  overflow: hidden;
+}
+
+.head {
+  background: var(--sabemi-blue);
+  color: #fff;
+  padding: 12px 16px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.body {
+  padding: 14px 16px;
+  display: grid;
+  gap: 10px;
+}
+
+.planName {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--sabemi-blue);
+  line-height: 1.35;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #eef2f6;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.k {
+  font-weight: 600;
+  color: var(--fg-1);
+}
+
+.v {
+  color: var(--fg-2);
+  text-align: right;
+}
+
+.price {
+  color: var(--sabemi-blue);
+  font-weight: 800;
+  font-size: 14px;
+  text-align: right;
+}
+
+.empty {
+  margin: 0;
+  padding: 16px;
+  font-size: 13px;
+  color: var(--fg-2);
+  text-align: center;
+  line-height: 1.45;
+}
+
+.cta {
+  display: block;
+  padding: 12px 16px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--sabemi-cyan);
+  text-decoration: none;
+  border-top: 1px solid #eef2f6;
+  transition: background var(--dur-base) var(--ease-out), color var(--dur-base);
+}
+
+.cta:hover {
+  background: var(--bg-brand-soft);
+  color: var(--sabemi-blue);
+}

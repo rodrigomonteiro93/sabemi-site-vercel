@@ -1,3 +1,4 @@
+import { ROUTES } from '@/lib/navigation/siteRoutes';
 import CategoryBadge from '@/components/atoms/CategoryBadge';
 import Button from '@/components/atoms/Button';
 import styles from './NewsCard.module.css';
@@ -18,7 +19,7 @@ export default function NewsCard({ imageUrl, category, categoryVariant, date, ti
         <CategoryBadge variant={categoryVariant}>{category}</CategoryBadge>
         <div className={styles.date}>{date}</div>
         <h3>{title}</h3>
-        <Button variant="outline">IR PARA O TEXTO</Button>
+        <Button variant="outline" href={ROUTES.blog}>IR PARA O TEXTO</Button>
       </div>
     </article>
   );

@@ -20,11 +20,12 @@ interface PlanCardProps {
   onToggleCompare: (idx: number) => void;
   onOpenEmail: (idx: number) => void;
   onOpenCobertura: (idx: number) => void;
+  onContratar: (plan: CotacaoPlan) => void;
 }
 
 export default function PlanCard({
   plan, index, passageiros, dias, isCompared, markupHidden,
-  onToggleCompare, onOpenEmail, onOpenCobertura,
+  onToggleCompare, onOpenEmail, onOpenCobertura, onContratar,
 }: PlanCardProps) {
   const bagCol = plan.cov ? (
     <CovCol
@@ -131,7 +132,7 @@ export default function PlanCard({
         </div>
         <button
           className={styles.btnContratar}
-          onClick={() => { window.location.href = '/carrinho'; }}
+          onClick={() => onContratar(plan)}
         >
           Contratar plano
         </button>

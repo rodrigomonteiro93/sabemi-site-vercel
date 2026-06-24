@@ -8,15 +8,34 @@
 }
 .row { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 0; }
 .row + .row { margin-top: 10px; }
-.rowEmail { position: relative; }
-.rowEmail::after {
-  content: '';
-  position: absolute;
-  right: 16px; top: 50%;
-  transform: translateY(-50%);
-  width: 14px; height: 14px;
-  background: var(--success);
+.rowEmail {
+  position: relative;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+.rowEmail button {
+  border: 0;
+  background: var(--sabemi-blue);
+  color: #fff;
   border-radius: 999px;
+  padding: 10px 16px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.rowEmail button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.consent a {
+  color: var(--sabemi-blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 .footNewsletter input {
   border: 1px solid #d3dae0;

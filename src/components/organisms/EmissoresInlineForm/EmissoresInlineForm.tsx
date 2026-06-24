@@ -56,7 +56,7 @@ export default function EmissoresInlineForm({ isOpen, editingItem, onClose, onSa
     } else {
       reset({ perfil: 'emissor', nome: '', email: '', senha: '', confirmarSenha: '', tel: '', cpf: '', comissao: '' });
     }
-  }, [editingItem, isOpen, reset]);
+  }, [editingItem, isOpen]);
 
   function onSubmit(data: FormValues) {
     onSave(data as EmissorFormData, editingItem?.id ?? null);

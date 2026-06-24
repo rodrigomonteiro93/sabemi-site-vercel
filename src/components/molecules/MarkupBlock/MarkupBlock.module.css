@@ -99,10 +99,17 @@
   margin-top: 12px;
   font-size: 12px;
 }
-.markupHint a {
+.markupHint a,
+.toggleLink {
   color: var(--sabemi-cyan);
   cursor: pointer;
   text-decoration: none;
   font-weight: 600;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  font-size: 12px;
 }
-.markupHint a:hover { color: var(--sabemi-blue); text-decoration: underline; text-underline-offset: 3px; }
+.markupHint a:hover,
+.toggleLink:hover { color: var(--sabemi-blue); text-decoration: underline; text-underline-offset: 3px; }

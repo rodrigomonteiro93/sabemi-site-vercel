@@ -32,3 +32,14 @@
 .arrowSide:hover { background: rgba(255,255,255,.35); }
 .videosCta { display: flex; justify-content: center; margin-top: 36px; }
 
+@media (max-width: 768px) {
+  .videos { padding: 56px 0; }
+  .videos h2 { font-size: 22px; }
+  .videosHead { margin-bottom: 24px; }
+}
+
+@media (max-width: 480px) {
+  .videos { padding: 40px 0; }
+  .videos h2 { font-size: 20px; }
+}
+

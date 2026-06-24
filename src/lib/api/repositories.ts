@@ -8,6 +8,12 @@ import type { FinanceiroItem } from '@/lib/types/financeiro';
 import type { VoucherPageItem } from '@/lib/types/vouchers';
 import type { EmissorItem } from '@/lib/types/emissores';
 import type { DashboardData } from '@/lib/types/dashboard';
+import type { PagesMetadata } from '@/lib/types/pages-metadata';
+import type {
+  NewsletterSubscribeRequest,
+  NewsletterSubscribeResponse,
+} from '@/lib/types/newsletter';
+import type { CadastroRequest, CadastroResponse } from '@/lib/types/cadastro';
 
 export interface VideosRepository {
   getHomeVideos(): Promise<VideoItem[]>;
@@ -49,6 +55,18 @@ export interface PlansRepository {
   getPlanos(params: CotacaoParams): Promise<CotacaoPlan[]>;
 }
 
+export interface PagesMetadataRepository {
+  getPagesMetadata(): Promise<PagesMetadata>;
+}
+
+export interface NewsletterRepository {
+  subscribe(data: NewsletterSubscribeRequest): Promise<NewsletterSubscribeResponse>;
+}
+
+export interface CadastroRepository {
+  register(data: CadastroRequest): Promise<CadastroResponse>;
+}
+
 export interface ApiProvider {
   plans: PlansRepository;
   videos: VideosRepository;
@@ -60,4 +78,7 @@ export interface ApiProvider {
   financeiro: FinanceiroRepository;
   vouchers: VouchersRepository;
   emissores: EmissoresRepository;
+  pagesMetadata: PagesMetadataRepository;
+  newsletter: NewsletterRepository;
+  cadastro: CadastroRepository;
 }

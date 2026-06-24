@@ -1,10 +1,7 @@
-import type { Metadata } from 'next';
+﻿import { createPageMetadata } from '@/lib/metadata/createPageMetadata';
 import CadastroContent from './page-content';
 
-export const metadata: Metadata = {
-  title: 'Cadastre-se | Sabemi Seguradora',
-  description: 'Crie sua conta na Sabemi e comece a oferecer seguros de viagem.',
-};
+export const generateMetadata = createPageMetadata('cadastro');
 
 export default function CadastroPage() {
   return <CadastroContent />;

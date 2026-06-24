@@ -3,9 +3,11 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import FormField from '@/components/molecules/FormField/FormField';
 import Button from '@/components/atoms/Button/Button';
+import { getSafeRedirectPath } from '@/lib/auth/session';
+import { ROUTES } from '@/lib/navigation/siteRoutes';
 import styles from './LoginForm.module.css';
 
 const schema = z.object({
@@ -17,7 +19,7 @@ const schema = z.object({
 type LoginFormValues = z.infer<typeof schema>;
 
 export default function LoginForm() {
-  const router = useRouter();
+  const searchParams = useSearchParams();
   const {
     register,
     setValue,
@@ -37,7 +39,9 @@ export default function LoginForm() {
     });
 
     if (res.ok) {
-      router.push('/dashboard');
+      const destination = getSafeRedirectPath(searchParams.get('callbackUrl'));
+      window.location.assign(destination);
+      return;
     } else {
       const body = await res.json();
       setError('root', { message: body.error ?? 'Credenciais inválidas' });
@@ -86,7 +90,7 @@ export default function LoginForm() {
           </Button>
         </div>
 
-        <a href="#" className={styles.forgot}>Esqueceu sua senha?</a>
+        <a href={ROUTES.recuperarSenha} className={styles.forgot}>Esqueceu sua senha?</a>
       </form>
     </>
   );

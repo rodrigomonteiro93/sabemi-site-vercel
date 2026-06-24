@@ -3,8 +3,8 @@ import { describe, it, expect } from 'vitest';
 import WhatsAppFab from './WhatsAppFab';
 
 describe('WhatsAppFab', () => {
-  it('renderiza botão com aria-label WhatsApp', () => {
+  it('renderiza link com aria-label WhatsApp', () => {
     render(<WhatsAppFab />);
-    expect(screen.getByRole('button', { name: 'WhatsApp' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'WhatsApp' })).toBeInTheDocument();
   });
 });

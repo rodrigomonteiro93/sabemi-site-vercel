@@ -3,17 +3,19 @@ import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import LoginForm from './LoginForm';
 
-const pushMock = vi.fn();
+const assignMock = vi.fn();
 
 vi.mock('next/navigation', () => ({
-  useRouter: () => ({
-    push: pushMock,
-  }),
+  useSearchParams: () => new URLSearchParams('callbackUrl=%2Fvouchers'),
 }));
 
 describe('LoginForm', () => {
   beforeEach(() => {
-    pushMock.mockClear();
+    assignMock.mockClear();
+    Object.defineProperty(window, 'location', {
+      configurable: true,
+      value: { assign: assignMock },
+    });
   });
 
   afterEach(() => {
@@ -59,7 +61,7 @@ describe('LoginForm', () => {
     expect(await screen.findAllByText('Obrigatório')).toHaveLength(2);
   });
 
-  it('redireciona para /dashboard após login bem-sucedido', async () => {
+  it('redireciona para callbackUrl após login bem-sucedido', async () => {
     const user = userEvent.setup();
     vi.spyOn(global, 'fetch').mockResolvedValue({
       ok: true,
@@ -71,7 +73,7 @@ describe('LoginForm', () => {
     await user.click(screen.getByRole('button', { name: /entrar/i }));
 
     await waitFor(() => {
-      expect(pushMock).toHaveBeenCalledWith('/dashboard');
+      expect(assignMock).toHaveBeenCalledWith('/vouchers');
     });
   });
 
@@ -88,6 +90,6 @@ describe('LoginForm', () => {
     await user.click(screen.getByRole('button', { name: /entrar/i }));
 
     expect(await screen.findByText('Credenciais inválidas')).toBeInTheDocument();
-    expect(pushMock).not.toHaveBeenCalled();
+    expect(assignMock).not.toHaveBeenCalled();
   });
 });

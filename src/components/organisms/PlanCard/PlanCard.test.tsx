@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi } from 'vitest';
 import PlanCard from './PlanCard';
@@ -13,6 +13,7 @@ const defaultProps = {
   onToggleCompare: vi.fn(),
   onOpenEmail: vi.fn(),
   onOpenCobertura: vi.fn(),
+  onContratar: vi.fn(),
 };
 
 describe('PlanCard', () => {
@@ -47,5 +48,27 @@ describe('PlanCard', () => {
     await user.click(screen.getByRole('checkbox'));
 
     expect(onToggleCompare).toHaveBeenCalledWith(0);
+  });
+
+  it('chama onContratar com o plano correto ao clicar em Contratar plano', () => {
+    const onContratar = vi.fn();
+    const mockPlan = PLANS_MOCK[0];
+    render(
+      <PlanCard
+        plan={mockPlan}
+        index={0}
+        passageiros={1}
+        dias={5}
+        isCompared={false}
+        markupHidden={false}
+        onToggleCompare={vi.fn()}
+        onOpenEmail={vi.fn()}
+        onOpenCobertura={vi.fn()}
+        onContratar={onContratar}
+      />
+    );
+    fireEvent.click(screen.getByText('Contratar plano'));
+    expect(onContratar).toHaveBeenCalledTimes(1);
+    expect(onContratar).toHaveBeenCalledWith(mockPlan);
   });
 });

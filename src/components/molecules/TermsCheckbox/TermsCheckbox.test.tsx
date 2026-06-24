@@ -9,7 +9,7 @@ describe('TermsCheckbox', () => {
 
     const checkbox = screen.getByRole('checkbox');
     expect(checkbox).not.toBeChecked();
-    expect(screen.getByRole('link', { name: 'termos de uso' })).toHaveAttribute('href', '#');
+    expect(screen.getByRole('link', { name: 'termos de uso' })).toHaveAttribute('href', '/termos-de-uso');
     expect(screen.getByText(/condições gerais do seguro e cobertura do produto/)).toBeInTheDocument();
   });
 

@@ -30,6 +30,18 @@ describe('GuestLayout', () => {
     expect(redirect).not.toHaveBeenCalled();
   });
 
+  it('não redireciona com auth-token vazio', async () => {
+    (cookies as ReturnType<typeof vi.fn>).mockResolvedValue({
+      get: () => ({ name: 'auth-token', value: '' }),
+    });
+
+    const result = await GuestLayout({ children: <div>Formulário de login</div> });
+    render(result as React.ReactElement);
+
+    expect(screen.getByText('Formulário de login')).toBeInTheDocument();
+    expect(redirect).not.toHaveBeenCalled();
+  });
+
   it('chama redirect para /dashboard quando auth-token está presente', async () => {
     (cookies as ReturnType<typeof vi.fn>).mockResolvedValue({
       get: () => ({ name: 'auth-token', value: 'abc123' }),

@@ -9,6 +9,9 @@ import { mockFinanceiroRepository } from '@/lib/api/mock/financeiro';
 import { mockVouchersRepository } from '@/lib/api/mock/vouchers';
 import { mockEmissoresRepository } from '@/lib/api/mock/emissores';
 import { mockPlansRepository } from '@/lib/api/mock/plans';
+import { mockPagesMetadataRepository } from '@/lib/api/mock/pages-metadata';
+import { mockNewsletterRepository } from '@/lib/api/mock/newsletter';
+import { mockCadastroRepository } from '@/lib/api/mock/cadastro';
 
 export const mockProvider: ApiProvider = {
   plans: mockPlansRepository,
@@ -21,4 +24,7 @@ export const mockProvider: ApiProvider = {
   financeiro: mockFinanceiroRepository,
   vouchers: mockVouchersRepository,
   emissores: mockEmissoresRepository,
+  pagesMetadata: mockPagesMetadataRepository,
+  newsletter: mockNewsletterRepository,
+  cadastro: mockCadastroRepository,
 };

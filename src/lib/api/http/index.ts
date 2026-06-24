@@ -9,6 +9,9 @@ import { httpFinanceiroRepository } from '@/lib/api/http/financeiro';
 import { httpVouchersRepository } from '@/lib/api/http/vouchers';
 import { httpEmissoresRepository } from '@/lib/api/http/emissores';
 import { httpPlansRepository } from '@/lib/api/http/plans';
+import { httpPagesMetadataRepository } from '@/lib/api/http/pages-metadata';
+import { httpNewsletterRepository } from '@/lib/api/http/newsletter';
+import { httpCadastroRepository } from '@/lib/api/http/cadastro';
 
 export const httpProvider: ApiProvider = {
   plans: httpPlansRepository,
@@ -21,4 +24,7 @@ export const httpProvider: ApiProvider = {
   financeiro: httpFinanceiroRepository,
   vouchers: httpVouchersRepository,
   emissores: httpEmissoresRepository,
+  pagesMetadata: httpPagesMetadataRepository,
+  newsletter: httpNewsletterRepository,
+  cadastro: httpCadastroRepository,
 };

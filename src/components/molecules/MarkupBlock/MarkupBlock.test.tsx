@@ -16,7 +16,7 @@ describe('MarkupBlock', () => {
 
     expect(screen.getByText('Ajustar Markup')).toBeInTheDocument();
     expect(screen.getByRole('slider')).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /Clique aqui para digitar/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Clique aqui para digitar/i })).toBeInTheDocument();
   });
 
   it('oculta controles quando hidden é true', () => {
@@ -46,14 +46,14 @@ describe('MarkupBlock', () => {
       />,
     );
 
-    await user.click(screen.getByRole('link', { name: /Clique aqui para digitar/i }));
+    await user.click(screen.getByRole('button', { name: /Clique aqui para digitar/i }));
 
     const input = screen.getByRole('spinbutton');
     expect(input).toBeInTheDocument();
 
     await user.clear(input);
     await user.type(input, '50');
-    await user.click(screen.getByRole('link', { name: /Clique aqui para deslizar/i }));
+    await user.click(screen.getByRole('button', { name: /Clique aqui para deslizar/i }));
 
     expect(onChange).toHaveBeenCalledWith(50);
     expect(screen.getByRole('slider')).toBeInTheDocument();

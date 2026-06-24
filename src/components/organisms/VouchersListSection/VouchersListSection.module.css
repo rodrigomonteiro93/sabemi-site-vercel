@@ -136,3 +136,14 @@
     display: none;
   }
 }
+
+@media (max-width: 600px) {
+  .quickSearch { max-width: 100%; min-width: 0; }
+  .vboxHead { padding: 14px 16px 12px; }
+  .emptyMsg { padding: 32px 16px; }
+}
+
+@media (max-width: 480px) {
+  .tabs { flex-wrap: wrap; }
+  .tab { padding: 6px 12px; font-size: 12px; }
+}

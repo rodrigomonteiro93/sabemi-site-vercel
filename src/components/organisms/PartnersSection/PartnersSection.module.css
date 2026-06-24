@@ -28,3 +28,8 @@
 }
 .arrowLight:hover { color: var(--sabemi-blue); border-color: var(--sabemi-cyan); }
 
+@media (max-width: 600px) {
+  .partners { padding: 40px 0 56px; }
+  .partners h2 { font-size: 18px; margin-bottom: 24px; }
+}
+

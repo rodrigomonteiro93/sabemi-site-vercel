@@ -1,5 +1,12 @@
 import { render, screen } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
+
+vi.mock('@/components/molecules/FooterNewsletter', () => ({
+  default: function MockFooterNewsletter() {
+    return <div data-testid="footer-newsletter" />;
+  },
+}));
+
 import SiteFooter from './SiteFooter';
 
 describe('SiteFooter', () => {
@@ -8,7 +15,7 @@ describe('SiteFooter', () => {
 
     expect(screen.getByRole('contentinfo')).toBeInTheDocument();
     expect(screen.getByText('SABEMI SEGURADORA S.A.')).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: /Receba novidades/i })).toBeInTheDocument();
+    expect(screen.getByTestId('footer-newsletter')).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'contato@sabemi.com.br' })).toBeInTheDocument();
   });
 });

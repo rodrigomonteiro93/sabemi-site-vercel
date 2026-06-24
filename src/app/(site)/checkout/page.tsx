@@ -1,10 +1,7 @@
-import type { Metadata } from 'next';
+﻿import { createPageMetadata } from '@/lib/metadata/createPageMetadata';
 import CheckoutPageContent from './page-content';
 
-export const metadata: Metadata = {
-  title: 'Efetuar Pagamento — Sabemi',
-  description: 'Finalize sua compra de seguro viagem Sabemi.',
-};
+export const generateMetadata = createPageMetadata('checkout');
 
 export default function CheckoutPage() {
   return <CheckoutPageContent />;

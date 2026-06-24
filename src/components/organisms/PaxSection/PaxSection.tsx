@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { paxSchema, type PaxFormData } from '@/lib/types/carrinho';
@@ -20,8 +21,24 @@ interface PaxSectionProps {
   periodo: string;
   onToggle: () => void;
   onRemove: () => void;
+  canRemove?: boolean;
   onMinimize: () => void;
   onSaveAndNext?: () => void;
+  initialData?: Partial<PaxFormData>;
+  onSaveDraft: (data: Partial<PaxFormData>) => void;
+}
+
+function buildDefaultValues(
+  planName: string,
+  initialData?: Partial<PaxFormData>,
+): Partial<PaxFormData> {
+  return {
+    tipoDoc: 'CPF',
+    enderecoSource: 'informar',
+    emergenciaSource: 'informar',
+    ...initialData,
+    plano: initialData?.plano ?? planName,
+  };
 }
 
 export default function PaxSection({
@@ -35,27 +52,45 @@ export default function PaxSection({
   periodo,
   onToggle,
   onRemove,
+  canRemove = true,
   onMinimize,
   onSaveAndNext,
+  initialData,
+  onSaveDraft,
 }: PaxSectionProps) {
   const {
     register,
     setValue,
     watch,
+    handleSubmit,
     formState: { errors },
   } = useForm<PaxFormData>({
     resolver: zodResolver(paxSchema),
-    defaultValues: { plano: planName, tipoDoc: 'CPF', enderecoSource: 'informar', emergenciaSource: 'informar' },
+    defaultValues: buildDefaultValues(planName, initialData),
   });
 
   const tipoDoc = watch('tipoDoc');
+
+  useEffect(() => {
+    const subscription = watch((values) => {
+      onSaveDraft(values);
+    });
+    return () => subscription.unsubscribe();
+  }, [watch, onSaveDraft]);
+
+  function saveAndContinue(onSuccess: () => void) {
+    handleSubmit(() => onSuccess())();
+  }
 
   return (
     <section className={`${styles.paxSection} ${isCollapsed ? styles.collapsed : ''}`}>
       <h2 className={styles.h2}>Inserir informações do passageiro {index}</h2>
 
       <div className={styles.paxCard}>
-        <div className={styles.paxCardHead} onClick={onToggle}>
+        <div
+          className={`${styles.paxCardHead} ${!canRemove ? styles.paxCardHeadNoRemove : ''}`}
+          onClick={onToggle}
+        >
           <div className={styles.ttl}>
             Dados da sua viagem — {planName} | {ageRange}
           </div>
@@ -69,14 +104,16 @@ export default function PaxSection({
               <polyline points="6 9 12 15 18 9" />
             </svg>
           </button>
-          <button
-            className={styles.x}
-            type="button"
-            aria-label="Remover"
-            onClick={(e) => { e.stopPropagation(); onRemove(); }}
-          >
-            ×
-          </button>
+          {canRemove && (
+            <button
+              className={styles.x}
+              type="button"
+              aria-label="Remover"
+              onClick={(e) => { e.stopPropagation(); onRemove(); }}
+            >
+              ×
+            </button>
+          )}
         </div>
 
         <PaxSummaryCard
@@ -277,11 +314,17 @@ export default function PaxSection({
         </div>
 
         <div className={styles.formActions}>
-          <Button variant="outline" onClick={onMinimize}>
+          <Button
+            variant="outline"
+            onClick={() => {
+              onSaveDraft(watch());
+              onMinimize();
+            }}
+          >
             Minimizar
           </Button>
           {onSaveAndNext && (
-            <Button variant="primary" onClick={onSaveAndNext}>
+            <Button variant="primary" onClick={() => saveAndContinue(onSaveAndNext)}>
               Salvar e ir para passageiro {index + 1}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12" />

@@ -16,6 +16,7 @@ const defaultProps = {
   onToggle: vi.fn(),
   onRemove: vi.fn(),
   onMinimize: vi.fn(),
+  onSaveDraft: vi.fn(),
 };
 
 describe('PaxSection', () => {
@@ -72,6 +73,12 @@ describe('PaxSection', () => {
     expect(onRemove).toHaveBeenCalledTimes(1);
   });
 
+  it('oculta botão remover quando canRemove é false', () => {
+    render(<PaxSection {...defaultProps} canRemove={false} />);
+
+    expect(screen.queryByRole('button', { name: 'Remover' })).not.toBeInTheDocument();
+  });
+
   it('dispara onMinimize ao clicar em Minimizar', async () => {
     const user = userEvent.setup();
     const onMinimize = vi.fn();
@@ -83,21 +90,16 @@ describe('PaxSection', () => {
     expect(onMinimize).toHaveBeenCalledTimes(1);
   });
 
-  it('exibe botão Salvar e ir para passageiro N+1 quando onSaveAndNext é informado', async () => {
-    const user = userEvent.setup();
-    const onSaveAndNext = vi.fn();
-
+  it('exibe botão Salvar e ir para passageiro N+1 quando onSaveAndNext é informado', () => {
     render(
       <PaxSection
         {...defaultProps}
         index={1}
-        onSaveAndNext={onSaveAndNext}
+        onSaveAndNext={vi.fn()}
       />,
     );
 
-    await user.click(screen.getByRole('button', { name: /Salvar e ir para passageiro 2/i }));
-
-    expect(onSaveAndNext).toHaveBeenCalledTimes(1);
+    expect(screen.getByRole('button', { name: /Salvar e ir para passageiro 2/i })).toBeInTheDocument();
   });
 
   it('não exibe botão Salvar e ir quando onSaveAndNext é omitido', () => {

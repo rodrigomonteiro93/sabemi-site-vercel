@@ -16,3 +16,12 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 768px) {
+  .page { padding: 20px 0 40px; }
+  .pageGrid { gap: 20px; }
+}
+
+@media (max-width: 480px) {
+  .page { padding: 16px 0 32px; }
+}

@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { AUTH_COOKIE_NAME } from '@/lib/auth/session';
 import { cookies } from 'next/headers';
 import { getProvider } from '@/lib/api/provider';
 import type { LoginRequest } from '@/lib/types/auth';
@@ -9,7 +10,7 @@ export async function POST(request: Request) {
     const { token } = await getProvider().auth.login(body);
 
     const cookieStore = await cookies();
-    cookieStore.set('auth-token', token, {
+    cookieStore.set(AUTH_COOKIE_NAME, token, {
       httpOnly: true,
       sameSite: 'lax',
       path: '/',

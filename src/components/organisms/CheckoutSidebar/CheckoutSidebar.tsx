@@ -4,6 +4,12 @@ import { useState } from 'react';
 import CupomCard from '@/components/molecules/CupomCard';
 import CheckoutTotalsCard from '@/components/molecules/CheckoutTotalsCard';
 import SecureBadge from '@/components/atoms/SecureBadge';
+import {
+  getCupomSuccessMessage,
+  getTotalsWithCupom,
+  resolveCupom,
+} from '@/lib/mocks/cupons';
+import { useCotacaoStore } from '@/lib/stores/cotacaoStore';
 import styles from './CheckoutSidebar.module.css';
 
 interface CheckoutSidebarProps {
@@ -22,6 +28,27 @@ export default function CheckoutSidebar({
   onFinalizar,
 }: CheckoutSidebarProps) {
   const [status, setStatus] = useState<'idle' | 'processing' | 'done'>('idle');
+  const [cupomMessage, setCupomMessage] = useState<{
+    text: string;
+    type: 'success' | 'error';
+  } | null>(null);
+  const appliedCupom = useCotacaoStore((s) => s.appliedCupom);
+  const setAppliedCupom = useCotacaoStore((s) => s.setAppliedCupom);
+
+  const totals = getTotalsWithCupom(totalVista, totalCartao, appliedCupom);
+
+  function handleApplyCupom(code: string) {
+    const cupom = resolveCupom(code);
+
+    if (!cupom) {
+      setAppliedCupom(null);
+      setCupomMessage({ text: 'Cupom inválido ou expirado.', type: 'error' });
+      return;
+    }
+
+    setAppliedCupom(cupom);
+    setCupomMessage({ text: getCupomSuccessMessage(cupom), type: 'success' });
+  }
 
   function handleFinalizar() {
     if (!isMethodSelected) return;
@@ -37,11 +64,27 @@ export default function CheckoutSidebar({
 
   return (
     <aside>
-      <CupomCard onApply={() => {}} />
+      <CupomCard onApply={handleApplyCupom} defaultCode={appliedCupom?.code} />
+      {cupomMessage && (
+        <p
+          className={[
+            styles.cupomMsg,
+            cupomMessage.type === 'success' ? styles.cupomMsgSuccess : styles.cupomMsgError,
+          ].join(' ')}
+        >
+          {cupomMessage.text}
+        </p>
+      )}
+      {!cupomMessage && appliedCupom && (
+        <p className={[styles.cupomMsg, styles.cupomMsgSuccess].join(' ')}>
+          {getCupomSuccessMessage(appliedCupom)}
+        </p>
+      )}
       <CheckoutTotalsCard
         paxLabel={`${paxCount} Passageiro(s)`}
-        totalCartao={totalCartao}
-        totalVista={totalVista}
+        totalCartao={totals.totalCartao}
+        totalVista={totals.totalVista}
+        desconto={totals.desconto}
       />
       <div className={styles.finalizarWrap}>
         <button

@@ -5,10 +5,11 @@ import styles from './CupomCard.module.css';
 
 interface CupomCardProps {
   onApply: (code: string) => void;
+  defaultCode?: string;
 }
 
-export default function CupomCard({ onApply }: CupomCardProps) {
-  const [code, setCode] = useState('');
+export default function CupomCard({ onApply, defaultCode = '' }: CupomCardProps) {
+  const [code, setCode] = useState(defaultCode);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -24,6 +25,7 @@ export default function CupomCard({ onApply }: CupomCardProps) {
           value={code}
           onChange={e => setCode(e.target.value)}
           className={styles.input}
+          placeholder="Ex: DESC10"
         />
         <button type="submit" aria-label="Aplicar cupom" className={styles.btn}>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

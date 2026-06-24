@@ -1,3 +1,4 @@
+import { ROUTES } from '@/lib/navigation/siteRoutes';
 import NewsCard from '@/components/molecules/NewsCard';
 import type { NewsItem } from '@/lib/types/news';
 import styles from './NewsSection.module.css';
@@ -12,7 +13,7 @@ export default function NewsSection({ news }: NewsSectionProps) {
       <div className="container">
         <div className={styles.newsHead}>
           <h2>Notícias e dicas para sua viagem</h2>
-          <a href="#">Clique para acessar todas as notícias</a>
+          <a href={ROUTES.blog}>Clique para acessar todas as notícias</a>
         </div>
         <div className={styles.newsGrid}>
           {news.map((n) => (

@@ -1,4 +1,5 @@
 import StatusBadge from '@/components/atoms/StatusBadge';
+import { ROUTES } from '@/lib/navigation/siteRoutes';
 import type { VoucherItem } from '@/lib/types/dashboard';
 import styles from './VoucherCard.module.css';
 
@@ -21,7 +22,7 @@ export default function VoucherCard({
             <span className={styles.v}>
               <StatusBadge variant={status} />
               {urlPag && (
-                <a href="#" className={styles.urlLink}>URL pagamento</a>
+                <a href={urlPag} className={styles.urlLink} target="_blank" rel="noopener noreferrer">URL pagamento</a>
               )}
             </span>
             <span />
@@ -40,7 +41,7 @@ export default function VoucherCard({
             <span className={styles.v}>{data}</span>
             <span className={styles.k}>Planos</span>
             <span className={styles.v}>{planos}</span>
-            <a href="#" className={styles.det}>Mais detalhes →</a>
+            <a href={`${ROUTES.vouchers}/${id}`} className={styles.det}>Mais detalhes →</a>
           </div>
 
         </div>

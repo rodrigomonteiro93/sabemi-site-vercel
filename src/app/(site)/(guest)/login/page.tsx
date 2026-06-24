@@ -1,10 +1,7 @@
-import type { Metadata } from 'next';
+﻿import { createPageMetadata } from '@/lib/metadata/createPageMetadata';
 import LoginContent from './page-content';
 
-export const metadata: Metadata = {
-  title: 'Login | Sabemi Seguradora',
-  description: 'Acesse sua conta na Sabemi Seguradora.',
-};
+export const generateMetadata = createPageMetadata('login');
 
 export default function LoginPage() {
   return <LoginContent />;

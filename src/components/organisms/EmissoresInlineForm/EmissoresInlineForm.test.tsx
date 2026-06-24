@@ -133,8 +133,8 @@ describe('EmissoresInlineForm', () => {
           email: 'novo@sabemi.com.br',
           senha: 'senha123',
           confirmarSenha: 'senha123',
-          tel: '11999998888',
-          cpf: '12345678901',
+          tel: '(11) 99999-8888',
+          cpf: '123.456.789-01',
         }),
         null,
       );

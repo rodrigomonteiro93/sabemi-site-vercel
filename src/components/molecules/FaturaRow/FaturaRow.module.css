@@ -50,3 +50,8 @@
   .row { grid-template-columns: 1fr; gap: 8px; }
   .total { text-align: left; }
 }
+
+@media (max-width: 480px) {
+  .row { padding: 12px 16px; }
+  .tv { font-size: 15px; }
+}

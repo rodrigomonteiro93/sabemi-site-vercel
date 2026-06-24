@@ -1,0 +1,15 @@
+.wrap {
+  max-width: 480px;
+}
+
+.hint {
+  margin-top: 16px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.hint a {
+  color: var(--sabemi-blue, #0066cc);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

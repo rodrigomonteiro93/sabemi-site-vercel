@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import SiteHeader from '@/components/organisms/SiteHeader/SiteHeader';
 import SiteFooter from '@/components/organisms/SiteFooter/SiteFooter';
 import WhatsAppFab from '@/components/atoms/WhatsAppFab/WhatsAppFab';
@@ -13,7 +14,9 @@ export default function LoginContent() {
         <div className={styles.container}>
           <div className={styles.loginGrid}>
             <section className={styles.colLeft}>
-              <LoginForm />
+              <Suspense fallback={null}>
+                <LoginForm />
+              </Suspense>
             </section>
             <section className={styles.colRight}>
               <h2 className={styles.colRightTitle}>Não tem conta?</h2>

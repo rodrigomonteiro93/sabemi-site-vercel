@@ -1,11 +1,8 @@
-import type { Metadata } from 'next';
+﻿import { createPageMetadata } from '@/lib/metadata/createPageMetadata';
 import DashboardPageContent from './page-content';
 import { getDashboard } from '@/lib/api/dashboard';
 
-export const metadata: Metadata = {
-  title: 'Dashboard | Sabemi',
-  description: 'Painel de controle da sua agência parceira Sabemi.',
-};
+export const generateMetadata = createPageMetadata('dashboard');
 
 export default async function DashboardPage() {
   const data = await getDashboard();
@@ -19,3 +16,4 @@ export default async function DashboardPage() {
     />
   );
 }
+
