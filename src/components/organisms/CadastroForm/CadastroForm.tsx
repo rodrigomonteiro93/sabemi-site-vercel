@@ -82,7 +82,7 @@ export default function CadastroForm() {
   const registroLabel = tipoCadastroValue === 'corretora' ? 'SUSEP *' : 'CADASTUR *';
 
   async function onSubmit(data: FormValues) {
-    const { confirmarSenha: _, ...payload } = data;
+    const { confirmarSenha: _confirmarSenha, ...payload } = data;
     await registerCadastro(payload);
     router.push(ROUTES.login);
   }
