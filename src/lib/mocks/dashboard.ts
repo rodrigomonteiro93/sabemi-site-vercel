@@ -1,9 +1,9 @@
 import type { ComissaoRow, VoucherItem, KpiItemData, DashboardData, CambioPanelData } from '@/lib/types/dashboard';
 
 const VOUCHERS: VoucherItem[] = [
-  { id: '27270', total: 'R$ 217,96', nome: 'Juliano da Silva Monteiro', data: '19/04/2026', pedido: '#27270', planos: 1, status: 'cancel',   urlPag: false },
-  { id: '27059', total: 'R$ 27,69',  nome: 'Michael Jordan',           data: '13/04/2026', pedido: '#27059', planos: 1, status: 'pendente', urlPag: true  },
-  { id: '26736', total: 'R$ 26,25',  nome: 'Juliano da Silva Monteiro', data: '27/03/2026', pedido: '#26736', planos: 1, status: 'emit',     urlPag: false },
+  { id: '27270', total: 'R$ 217,96', nome: 'Juliano da Silva Monteiro', data: '19/04/2026', pedido: '#27270', planos: 1, status: 'cancel',   urlPag: undefined },
+  { id: '27059', total: 'R$ 27,69',  nome: 'Michael Jordan',           data: '13/04/2026', pedido: '#27059', planos: 1, status: 'pendente', urlPag: '#'       },
+  { id: '26736', total: 'R$ 26,25',  nome: 'Juliano da Silva Monteiro', data: '27/03/2026', pedido: '#26736', planos: 1, status: 'emit',     urlPag: undefined },
 ];
 
 const COMISSOES: ComissaoRow[] = [

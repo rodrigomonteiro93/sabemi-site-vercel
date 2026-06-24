@@ -216,7 +216,7 @@ function CarrinhoWithPlan() {
 
 export default function CarrinhoContent() {
   const selectedPlan = useCotacaoStore((s) => s.selectedPlan);
-  const [hydrated, setHydrated] = useState(() => useCotacaoStore.persist.hasHydrated());
+  const [hydrated, setHydrated] = useState(() => useCotacaoStore.persist?.hasHydrated() ?? false);
 
   useEffect(() => {
     if (useCotacaoStore.persist.hasHydrated()) {
